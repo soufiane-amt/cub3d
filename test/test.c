@@ -6,12 +6,13 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 22:42:02 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/18 13:40:20 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/18 18:29:36 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "mlx.h"
+#include <math.h>
 
 #define RED 0xff0000
 #define BLUE 255
@@ -26,8 +27,8 @@ char map[MAP_COL][MAP_RAW] = {{'1', '1', '1', '1', '1', '1', '1'},
                 {'1', '0', '0', '0', '0', '0', '1'},
                 {'1', '0', '1', '0', '0', '0', '1'},
                 {'1', '0', '0', '0', '0', '0', '1'},
-                {'1', '0', '0', '0', 'N', '0', '1'},
                 {'1', '0', '0', '0', '0', '0', '1'},
+                {'1', '0', '0', '0', 'N', '0', '1'},
                 {'1', '1', '1', '1', '1', '1', '1'}};
                 
 void draw_rectangle(void *mlx, void *win, int x, int y)
@@ -55,20 +56,19 @@ void draw_line(void *mlx, void *win, int x, int y, int length)
     i = 0;
     while (i < length)
     {
-           mlx_pixel_put(mlx, win, x + i, y, i);
+           mlx_pixel_put(mlx, win, x + i, y, RED);
         i++;
     }
 }
 void draw_triangle(void *mlx, void *win, int x, int y)
 {
     int i = 0;
-    int j;
 
     while (i <= 100)
     {
         if (i % 2)
         {
-            draw_line(mlx, win , x, y,  i * 2);
+            draw_line(mlx, win , x - i, y - i,  i * 2);
         }
         i++;
     }
@@ -99,13 +99,11 @@ void    rendering_map(void *mlx, void *win)
             {
                 if (map[i][j] == '1')
                     draw_rectangle(mlx, win, i * ENTITY_SIZE, j * ENTITY_SIZE);
-                else if (map[i][j] == 'N')
-                    draw_triangle(mlx, win, i * ENTITY_SIZE, j * ENTITY_SIZE);
                 j++;
             }
             i++;
         }
-    
+        draw_triangle(mlx, win, 6 * ENTITY_SIZE, 5 * ENTITY_SIZE);
 }
 
 int main ()
