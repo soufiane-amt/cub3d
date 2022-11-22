@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 22:42:02 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/22 21:39:05 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/22 22:42:22 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ float convert_degree_to_radian(float dgreeValue)
 void rotate(void *mlx, void *win, int a, int b, int x, int y , float angle)
 {
     // int x , y;
-    angle = convert_degree_to_radian(-angle);
+    angle = convert_degree_to_radian(angle);
     // x = a * (cos(angle)) - b * (sin(angle));
     // y = a * (sin(angle)) + b * (cos(angle));
     // x = 
@@ -160,9 +160,86 @@ void rotate(void *mlx, void *win, int a, int b, int x, int y , float angle)
 
 int main ()
 {
+    // {
+    // void *mlx;
+    // void *win;
+    // double angleD = 0;
+    // double angleR = convert_degree_to_radian(angleD);
+    // // double angle = 90;
+    // // double angle = 3*M_PI/2 - ((((3*M_PI/2) - M_PI)) / 2);
+
+    // mlx = mlx_init();
+    // win = mlx_new_window(mlx, 1000, 1000, "TEST");
+    // // draw_triangle(mlx, win, 6 * ENTITY_SIZE, 5 * ENTITY_SIZE);
+    
+    // draw_line(mlx, win, 500, 500, 500 + cos(angleD) * 100 , 500 + sin(angleD) * 100 );    
+    // // rotate(mlx, win , 500, 500, 500, 500 + sin(angle) * 200,  90);
+    // // rotate(mlx, win , 500, 500, 500 + cos(angle), 500 + sin(angle),  30 - 90 );
+    // rotate(mlx, win , 500, 500, 0 , 0 , angleD  - 30  );
+    // rotate(mlx, win , 500, 500, 0 , 0 , angleD  + 30  );
+    // // int i = angleD - 30;
+    // // while (i <= angleD + 30)
+    // // {
+    // //     rotate(mlx, win , 500, 500, 0 , 0 , angleD + i);
+    // //     i++;
+    // // }
+    // mlx_loop(mlx);
+    // }
+
+    
+    // {
+    // void *mlx;
+    // void *win;
+    // double angleD = 90;
+    // double angleR = convert_degree_to_radian(angleD);
+    // // double angle = 90;
+    // // double angle = 3*M_PI/2 - ((((3*M_PI/2) - M_PI)) / 2);
+
+    // mlx = mlx_init();
+    // win = mlx_new_window(mlx, 1000, 1000, "TEST");
+    // // draw_triangle(mlx, win, 6 * ENTITY_SIZE, 5 * ENTITY_SIZE);
+    
+    // draw_line(mlx, win, 500, 600, 500 + cos(angleR) * 100 , 600 + sin(angleR) * 100 );    
+    // rotate(mlx, win , 500, 600, 0 , 0 , angleD    - 30  );
+    // rotate(mlx, win , 500, 600, 0 , 0 , angleD   + 30  );
+    // // int i = angleD - 30;
+    // // while (i <= angleD + 30)
+    // // {
+    // //     rotate(mlx, win , 500, 600, 0 , 0 , angleD + i);
+    // //     i++;
+    // // }
+    // mlx_loop(mlx);
+    // }
+
+    
+    // {
+    // void *mlx;
+    // void *win;
+    // double angleD = 180;
+    // double angleR = convert_degree_to_radian(angleD);
+    // // double angle = 90;
+    // // double angle = 3*M_PI/2 - ((((3*M_PI/2) - M_PI)) / 2);
+
+    // mlx = mlx_init();
+    // win = mlx_new_window(mlx, 1000, 1000, "TEST");
+    // // draw_triangle(mlx, win, 6 * ENTITY_SIZE, 5 * ENTITY_SIZE);
+    
+    // draw_line(mlx, win, 500, 600, 500 + cos(angleR) * 100 , 600 + sin(angleR) * 100 );    
+    // rotate(mlx, win , 500, 600, 0 , 0 , angleD    - 30  );
+    // rotate(mlx, win , 500, 600, 0 , 0 , angleD   + 30  );
+    // // int i = angleD - 30;
+    // // while (i <= angleD + 30)
+    // // {
+    // //     rotate(mlx, win , 500, 600, 0 , 0 , angleD + i);
+    // //     i++;
+    // // }
+    // mlx_loop(mlx);
+    // }
+    
+    {
     void *mlx;
     void *win;
-    double angleD = 0;
+    double angleD = 90;
     double angleR = convert_degree_to_radian(angleD);
     // double angle = 90;
     // double angle = 3*M_PI/2 - ((((3*M_PI/2) - M_PI)) / 2);
@@ -171,16 +248,16 @@ int main ()
     win = mlx_new_window(mlx, 1000, 1000, "TEST");
     // draw_triangle(mlx, win, 6 * ENTITY_SIZE, 5 * ENTITY_SIZE);
     
-    draw_line(mlx, win, 500, 500, 500 + cos(0) * 100 , 500 + sin(0) *100 );    
-    // rotate(mlx, win , 500, 500, 500, 500 + sin(angle) * 200,  90);
-    // rotate(mlx, win , 500, 500, 500 + cos(angle), 500 + sin(angle),  30 - 90 );
-    // rotate(mlx, win , 500, 500, 0 , 0 , angleD  );
-    int i = angleD - 30;
-    while (i <= angleD + 30)
-    {
-        rotate(mlx, win , 500, 500, 0 , 0 , angleD + i);
-        i+= 1;
+    draw_line(mlx, win, 500, 600, 500 + cos(angleR) * 100 , 600 + sin(angleR) * 100 );    
+    rotate(mlx, win , 500, 600, 0 , 0 , angleD    - 30  );
+    rotate(mlx, win , 500, 600, 0 , 0 , angleD   + 30  );
+    // int i = angleD - 30;
+    // while (i <= angleD + 30)
+    // {
+    //     rotate(mlx, win , 500, 600, 0 , 0 , angleD + i);
+    //     i++;
+    // }
+    mlx_loop(mlx);
     }
     
-    mlx_loop(mlx);
 }
