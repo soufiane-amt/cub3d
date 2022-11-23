@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 23:00:18 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/23 23:22:46 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ typedef struct s_point
 typedef struct s_vector
 {
     t_point         origPoint;
-    t_point         dirPoint;
-    float           angle;
+    float           direction;
     const int       magnitude;
 }   t_vector;
 
