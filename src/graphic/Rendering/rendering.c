@@ -6,11 +6,39 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 17:52:17 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/23 19:08:32 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+char map[MAP_COL][MAP_RAW] = {{'1', '1', '1', '1', '1', '1', '1'},
+                {'1', '0', '0', '0', '0', '0', '1'},
+                {'1', '0', '0', '0', '0', '0', '1'},
+                {'1', '0', '1', '0', '0', '0', '1'},
+                {'1', '0', '0', '0', '0', '0', '1'},
+                {'1', '0', '0', '0', '0', '0', '1'},
+                {'1', '0', '0', '0', 'N', '0', '1'},
+                {'1', '1', '1', '1', '1', '1', '1'}};
+
+//temp
+void draw_rectangle(void *mlx, void *win, int x, int y)
+{
+    int i = 0;
+    int j;
+
+    j = 0;
+    while (i < ENTITY_SIZE)
+    {
+        j = 0;
+        while (j < ENTITY_SIZE)
+        {
+            mlx_pixel_put(mlx, win, x + j, y + i, BLUE);
+            j++;
+        }
+        i++;
+    }
+}
 
 void draw_line(t_mlx mlx, t_point point1, t_point point2)
 {
@@ -35,7 +63,26 @@ void draw_line(t_mlx mlx, t_point point1, t_point point2)
     }
 }
 
-void    render_grid(t_mlx *mlx)
+void    render_player(t_mlx *mlx)
 {
     
+}
+
+void    render_grid(t_mlx *mlx)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (i < MAP_COL)
+    {
+        j = 0;
+        while (j < MAP_RAW)
+        {
+            if (map[i][j] == '1')
+                draw_rectangle(mlx->mlx, mlx->win, i * ENTITY_SIZE, j * ENTITY_SIZE);
+            j++;
+        }
+        i++;
+    }
 }
