@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 19:21:03 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/23 21:39:33 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ typedef struct s_point
 
 typedef struct s_vector
 {
-    t_point   origPoint;
-    t_point   dirPoint;
-    float     angle;
-    int       magnitude;
+    t_point         origPoint;
+    t_point         dirPoint;
+    float           angle;
+    const int       magnitude;
 }   t_vector;
 
 
@@ -88,5 +88,7 @@ typedef struct s_player
 
 //Rendering functions
 void    render_grid(t_mlx *mlx);
-void    draw_line(t_mlx *mlx, t_point point1, t_point point2);
+void    draw_line(t_mlx *mlx,  t_point *point1,  t_point *point2);
+float   convert_degree_to_radian(float dgreeValue);
+
 #endif

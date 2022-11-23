@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 19:20:26 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/23 21:33:37 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void draw_rectangle(void *mlx, void *win, int x, int y)
     }
 }
 
-void draw_line(t_mlx *mlx, t_point *point1, t_point *point2)
+void draw_line(t_mlx *mlx, const t_point *point1, const t_point *point2)
 {
     // calculate dx & dy
     int dx = point2->X - point1->X;

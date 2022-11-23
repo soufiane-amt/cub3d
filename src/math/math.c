@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.c                                           :+:      :+:    :+:   */
+/*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 19:16:48 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 21:47:55 by samajat          ###   ########.fr       */
+/*   Created: 2022/11/23 21:08:31 by samajat           #+#    #+#             */
+/*   Updated: 2022/11/23 21:08:38 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-void rotate(t_mlx *mlx, t_vector *vector , float angle)
+float convert_degree_to_radian(float dgreeValue)
 {
-    
-    angle = convert_degree_to_radian(angle);
-    draw_line(mlx, vector->dirPoint, (&t_point){vector->dirPoint.X + cos(angle) * vector->magnitude,\
-        vector->dirPoint.Y + sin(angle) * vector->magnitude});
-}
-
-
-
-void    draw_vector(t_mlx *mlx, t_vector *vector)
-{
-    draw_line(mlx, vector->origPoint, vector->dirPoint);
-}
-
-void    render_player(t_mlx *mlx)
-{
-    
+    return (dgreeValue * M_PI/180.0);
 }
