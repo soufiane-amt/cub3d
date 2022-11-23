@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:16:48 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 21:47:55 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/23 21:49:44 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void rotate(t_mlx *mlx, t_vector *vector , float angle)
 {
     
     angle = convert_degree_to_radian(angle);
-    draw_line(mlx, vector->dirPoint, (&t_point){vector->dirPoint.X + cos(angle) * vector->magnitude,\
+    draw_line(mlx, vector->dirPoint, (t_point){vector->dirPoint.X + cos(angle) * vector->magnitude,\
         vector->dirPoint.Y + sin(angle) * vector->magnitude});
 }
 

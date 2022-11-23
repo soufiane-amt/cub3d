@@ -7,15 +7,15 @@ typedef struct data
     const int a ;
 }D;
 
-void    func(D* d)
+void    func(D d)
 {
-    printf("%d    %d\n", d->a, d->i);
+    printf("%d    %d\n", d.a, d.i);
 }
 
 int main()
 {
     // const D a = {.a=45, .i=444};
-    func(&(D){1, 1337});
+    func((D){1, 1337});
 
     // printf("%d   %d\n", a.a, a.i);
     return 0;
