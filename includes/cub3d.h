@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 16:56:53 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/23 17:51:14 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,14 @@
 #define MAP_COL 8
 #define ENTITY_SIZE 50
 
-//
+//FOV
 #define FOV 60
+
+//COLORS
+#define RED   0xff00000
+#define BLUE  0xfffffff
+#define GREEN 0x0000FF00
+
 
 char map[MAP_COL][MAP_RAW] = {{'1', '1', '1', '1', '1', '1', '1'},
                 {'1', '0', '0', '0', '0', '0', '1'},
@@ -67,8 +73,8 @@ typedef struct s_mlx
 
 typedef struct s_point
 {
-    float   x;
-    float   y;
+    float   X;
+    float   Y;
 }   t_point;
 
 typedef struct s_vector
