@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 23:22:46 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/23 23:35:26 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_player
 
 //Pixel manipulation funcs
 void    draw_line(t_mlx *mlx,  t_point point1,  t_point point2);
-void    send_ray(t_mlx *mlx, const t_vector *vector , float angleToRotate);
+void    launch_ray(t_mlx *mlx, const t_vector *vector , float angleToRotate);
 
 //Rendering functions
 void    render_grid(t_mlx *mlx);
