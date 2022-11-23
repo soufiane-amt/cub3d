@@ -6,7 +6,7 @@
 #    By: samajat <samajat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 11:25:40 by samajat           #+#    #+#              #
-#    Updated: 2022/11/23 19:02:34 by samajat          ###   ########.fr        #
+#    Updated: 2022/11/23 22:16:37 by samajat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,12 @@ MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 RM =  rm -rf
 
-GRSRC = $(addprefix graphic/rendering/, rendering)
+GRSRC = $(addprefix graphic/rendering/, rendering)\
+		$(addprefix graphic/, player)
 		
+MSRC = $(addprefix math/, math)
 
-SRC = cub3d $(GRSRC)
+SRC = cub3d $(GRSRC) $(MSRC)
 
 HEADERS = cub3d.h
 
