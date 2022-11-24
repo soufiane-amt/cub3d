@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:53:25 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 23:41:08 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 23:46:51 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ void    func(x ptr)
 
 int main ()
 {
-    func((x){45});
+    int height;
+    int width;
+
+    height = width = 4;
 }
