@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 20:09:48 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 20:14:03 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 #define MAP_COL 8
 #define ENTITY_SIZE 50
 
-//FOV
+//FOV (Field of vision)
 #define FOV 60
 
 //COLORS
