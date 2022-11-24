@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 22:42:02 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 17:56:20 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 21:42:11 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,5 +269,4 @@ int main ()
     mlx_key_hook(win, key_hook, NULL);    
     mlx_loop(mlx);
     }
-    
 }

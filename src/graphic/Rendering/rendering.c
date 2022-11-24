@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 20:39:49 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 22:05:23 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void    render_grid(t_mlx *mlx)
     int i;
     int j;
 
+    
     i = 0;
     while (i < MAP_COL)
     {
@@ -86,5 +87,7 @@ void    render_grid(t_mlx *mlx)
 
 void    renderPlayer(t_mlx *mlx, t_player *player)
 {
-    
+    mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->player_img,
+        player->pos.origPoint.X, player->pos.origPoint.Y);
+    launch_ray(mlx, &player->pos, player->pos.direction);
 }

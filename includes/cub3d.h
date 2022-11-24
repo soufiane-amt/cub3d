@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 21:25:14 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 21:59:53 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@
 #define BLACK 0x000
 
 
-
+//Relative paths
+#define AVATAR_IMG "./img/redCircle.xpm"
 
 //Keys
 enum {
@@ -64,6 +65,7 @@ typedef struct s_mlx
 {
     void    *mlx;
     void    *win;
+    void    *player_img;
 }   t_mlx;
 
 
@@ -88,7 +90,7 @@ typedef struct s_player
 }   t_player;
 
 
-typedef s_param
+typedef struct s_param
 {
     t_mlx       *mlx;
     t_player    *player;
@@ -113,7 +115,7 @@ void    moveBack(t_player  *player);
 
 //Rotation Listener
 void    turnRight(t_player  *player);
-void    turnLeft(t_player  *player)
+void    turnLeft(t_player  *player);
 void    turnUp  (t_player  *player);
 void    turnDown(t_player  *player);
 void    rotatePlayer (t_player *player , int dir, float angleToRotate);
