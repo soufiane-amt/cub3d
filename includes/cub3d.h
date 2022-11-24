@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 20:14:03 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 21:25:14 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 
 //FOV (Field of vision)
 #define FOV 60
+#define TO_LEFT  -1
+#define TO_RIGHT -1
+
 
 //COLORS
 #define RED   0xff00000
@@ -85,6 +88,11 @@ typedef struct s_player
 }   t_player;
 
 
+typedef s_param
+{
+    t_mlx       *mlx;
+    t_player    *player;
+}t_param;
 
 //Pixel manipulation funcs
 void    draw_line(t_mlx *mlx,  t_point point1,  t_point point2);
@@ -108,5 +116,7 @@ void    turnRight(t_player  *player);
 void    turnLeft(t_player  *player)
 void    turnUp  (t_player  *player);
 void    turnDown(t_player  *player);
+void    rotatePlayer (t_player *player , int dir, float angleToRotate);
+void    renderPlayer(t_mlx *mlx, t_player *player);
 
 #endif

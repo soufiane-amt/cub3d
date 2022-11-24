@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:16:48 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 20:29:01 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 20:31:53 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 void rotatePlayer (t_player *player , int dir, float angleToRotate)
 {
-    player->pos.direction = dir * player->pos.direction + angleToRotate;
+    player->pos.direction = player->pos.direction + (dir * angleToRotate);
 }
 
 void launch_ray(t_mlx *mlx, const t_vector *vector , float angleToRotate)

@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 19:14:47 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 20:39:49 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void    render_grid(t_mlx *mlx)
     }
 }
 
-void    render_player(t_mlx *mlx, t_player *player)
+void    renderPlayer(t_mlx *mlx, t_player *player)
 {
     
 }
