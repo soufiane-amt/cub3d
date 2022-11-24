@@ -6,11 +6,11 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:02:04 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 19:11:30 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 22:20:47 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d"
+#include "cub3d.h"
 
 
 void    moveLeft(t_player  *player)

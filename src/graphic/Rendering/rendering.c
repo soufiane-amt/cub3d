@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 22:05:23 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 22:06:29 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void    render_grid(t_mlx *mlx)
     int i;
     int j;
 
-    
+    mlx_destroy_window(mlx->mlx, mlx->win);
     i = 0;
     while (i < MAP_COL)
     {

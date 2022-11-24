@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:53:25 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 21:56:59 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 22:32:41 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 #include <stdio.h>
 
 
+void    func(int *ptr)
+{
+    printf("haa l value : %d", *ptr);
+}
+
 int main ()
 {
-    printf("%s", USER);
 }

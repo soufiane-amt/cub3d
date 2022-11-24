@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:41:57 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 18:58:22 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 22:38:56 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@ void    set_up_mlx(t_mlx    *mlx, char* title)
     if (!mlx->win)
         exit(1);
 }
+    // mlx->player_img = mlx_xpm_file_to_image(mlx->mlx, AVATAR_IMG, 0, 0);
 
-
-void    launch_game(t_mlx *mlx)
-{
     // t_vector vector = {.origPoint = (t_point){500, 500}, -90, 200};
 
     // launch_ray(mlx, &vector , -90 );
+
+void    launch_game(t_mlx *mlx)
+{
+
+    
     render_grid(mlx);
-    // mlx_
+
 }
 
 int main ()

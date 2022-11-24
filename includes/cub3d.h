@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 21:59:53 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 22:38:22 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@
 
 
 //Relative paths
-#define AVATAR_IMG "./img/redCircle.xpm"
+#define AVATAR_IMG "./img/redCircle.xpm",
 
 //Keys
-enum {
+enum KEYS {
 	MOVE_LEFT_KEY = 0,
 	MOVE_RIGHT_KEY = 2,
 	MOVE_FRONT_KEY = 13,
@@ -65,7 +65,6 @@ typedef struct s_mlx
 {
     void    *mlx;
     void    *win;
-    void    *player_img;
 }   t_mlx;
 
 
@@ -86,7 +85,8 @@ typedef struct s_vector
 typedef struct s_player
 {
     t_vector    pos;
-
+    void        *img;
+    
 }   t_player;
 
 
