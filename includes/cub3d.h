@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 23:35:26 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 15:47:46 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 #define RED   0xff00000
 #define BLUE  255
 #define GREEN 0x0000FF00
+#define BLACK 0x000
 
 
 

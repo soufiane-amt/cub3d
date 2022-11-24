@@ -6,13 +6,17 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:16:48 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 23:49:54 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 15:51:16 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 
+// void    put_ground_to_default()
+// {
+    
+// }
 
 
 void launch_ray(t_mlx *mlx, const t_vector *vector , float angleToRotate)

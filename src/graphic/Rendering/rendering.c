@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 23:29:23 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 15:47:56 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ char map[MAP_COL][MAP_RAW] = {{'1', '1', '1', '1', '1', '1', '1'},
                 {'1', '1', '1', '1', '1', '1', '1'}};
 
 //temp
-void draw_rectangle(void *mlx, void *win, int x, int y)
+void draw_rectangle(t_mlx *mlx, t_point point, int COLOR)
 {
-    int i = 0;
+    int i;
     int j;
 
-    j = 0;
+    i = 0;
     while (i < ENTITY_SIZE)
     {
         j = 0;
         while (j < ENTITY_SIZE)
         {
-            mlx_pixel_put(mlx, win, x + j, y + i, BLUE);
+            mlx_pixel_put(mlx->mlx, mlx->win, point.X + j, point.Y + i, COLOR);
             j++;
         }
         i++;
@@ -76,7 +76,9 @@ void    render_grid(t_mlx *mlx)
         while (j < MAP_RAW)
         {
             if (map[i][j] == '1')
-                draw_rectangle(mlx->mlx, mlx->win, i * ENTITY_SIZE, j * ENTITY_SIZE);
+                draw_rectangle(mlx, (t_point){.X=i * ENTITY_SIZE,  .Y=j * ENTITY_SIZE}, BLUE);
+            else if (map[i][j] == '0')
+                draw_rectangle(mlx, (t_point){.X=i * ENTITY_SIZE,  .Y=j * ENTITY_SIZE}, BLACK);
             j++;
         }
         i++;

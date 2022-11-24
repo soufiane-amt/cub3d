@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:41:57 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 23:42:28 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 18:58:22 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,21 @@ void    keep_game_working(t_mlx *mlx)
 void    set_up_mlx(t_mlx    *mlx, char* title)
 {
     mlx->mlx = mlx_init();
+    if (!mlx->mlx)
+        exit(1);
     mlx->win = mlx_new_window(mlx->mlx, WINDOW_SIZEX, WINDOW_SIZEY, title);
+    if (!mlx->win)
+        exit(1);
 }
 
 
 void    launch_game(t_mlx *mlx)
 {
-    t_vector vector = {.origPoint = (t_point){500, 500}, -90, 200};
+    // t_vector vector = {.origPoint = (t_point){500, 500}, -90, 200};
 
-    launch_ray(mlx, &vector , -90 );
+    // launch_ray(mlx, &vector , -90 );
+    render_grid(mlx);
+    // mlx_
 }
 
 int main ()
