@@ -6,11 +6,21 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:41:57 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 22:38:56 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 23:24:45 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+char map[MAP_COL][MAP_RAW] = {{'1', '1', '1', '1', '1', '1', '1'},
+                {'1', '0', '0', '0', '0', '0', '1'},
+                {'1', '0', '0', '0', '0', '0', '1'},
+                {'1', '0', '1', '0', '0', '0', '1'},
+                {'1', '0', '0', '0', '0', '0', '1'},
+                {'1', '0', '0', '0', '0', '0', '1'},
+                {'1', '0', '0', '0', 'N', '0', '1'},
+                {'1', '1', '1', '1', '1', '1', '1'}};
+
 
 void    keep_game_working(t_mlx *mlx)
 {
@@ -34,10 +44,10 @@ void    set_up_mlx(t_mlx    *mlx, char* title)
 
 void    launch_game(t_mlx *mlx)
 {
+    t_player    player;
 
     
-    render_grid(mlx);
-
+    eventPerceiver(mlx, &player);
 }
 
 int main ()

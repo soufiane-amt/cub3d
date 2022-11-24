@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:53:25 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 22:32:41 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 23:41:08 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 #include <stdio.h>
 
 
-void    func(int *ptr)
+typedef struct x
 {
-    printf("haa l value : %d", *ptr);
+    int         a;
+}x;
+
+void    func(x ptr)
+{
+    printf("haa l value : %d", ptr.a);
 }
 
 int main ()
 {
+    func((x){45});
 }

@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 22:38:22 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 23:42:17 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 #define FOV 60
 #define TO_LEFT  -1
 #define TO_RIGHT -1
-
+#define RAY_LENGTH 200
 
 //COLORS
 #define RED   0xff00000
@@ -43,6 +43,7 @@
 #define GREEN 0x0000FF00
 #define BLACK 0x000
 
+extern char map[MAP_COL][MAP_RAW];
 
 //Relative paths
 #define AVATAR_IMG "./img/redCircle.xpm",
@@ -78,7 +79,7 @@ typedef struct s_vector
 {
     t_point         origPoint;
     float           direction;
-    const int       magnitude;
+    int             magnitude;
 }   t_vector;
 
 
@@ -120,5 +121,11 @@ void    turnUp  (t_player  *player);
 void    turnDown(t_player  *player);
 void    rotatePlayer (t_player *player , int dir, float angleToRotate);
 void    renderPlayer(t_mlx *mlx, t_player *player);
+
+//main events func
+void    eventPerceiver(t_mlx *mlx, t_player *player);
+
+//set to default
+void    set_player_default_info(t_player *player);
 
 #endif
