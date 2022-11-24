@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 15:47:46 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 20:09:48 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,17 @@ void    render_grid(t_mlx *mlx);
 
 //Math funcs
 float convert_degree_to_radian(float dgreeValue);
+
+//Moves Listener
+void    moveLeft(t_player  *player);
+void    moveRight(t_player  *player);
+void    moveFront(t_player  *player);
+void    moveBack(t_player  *player);
+
+//Rotation Listener
+void    turnRight(t_player  *player);
+void    turnLeft(t_player  *player)
+void    turnUp  (t_player  *player);
+void    turnDown(t_player  *player);
 
 #endif

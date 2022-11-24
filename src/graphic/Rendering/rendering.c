@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 15:47:56 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/24 19:14:47 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,23 @@ void draw_rectangle(t_mlx *mlx, t_point point, int COLOR)
 
 void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
 {
-    // calculate dx & dy
     int dx = point2.X - point1.X;
     int dy = point2.Y - point1.Y;
  
-    // calculate steps required for generating pixels
     int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
  
-    // calculate increment in x & y for each steps
     float Xinc = dx / (float)steps;
     float Yinc = dy / (float)steps;
  
-    // Put pixel for each step
     float X = point1.X;
     float Y = point1.Y;
-    for (int i = 0; i <= steps; i++) {
-        mlx_pixel_put(mlx->mlx, mlx->win, X, Y, RED); // put pixel at (X,Y)
-        X += Xinc; // increment in x at each step
-        Y += Yinc; // increment in y at each step
+    int i = 0;
+    while ( i <= steps)
+    {
+        mlx_pixel_put(mlx->mlx, mlx->win, X, Y, RED);
+        X += Xinc;
+        Y += Yinc;
+        i++;
     }
 }
 
@@ -83,4 +82,9 @@ void    render_grid(t_mlx *mlx)
         }
         i++;
     }
+}
+
+void    render_player(t_mlx *mlx, t_player *player)
+{
+    
 }
