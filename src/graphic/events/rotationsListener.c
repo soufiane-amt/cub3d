@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:06:47 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 20:11:37 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 20:12:14 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void    turnRight(t_player  *player)
 {
-    rotatePlayer(player, TO_RIGHT, PLAYER_SPEED);
+    rotatePlayer(player, TO_RIGHT, PLAYER_SPEED/2);
 }
 
 void    turnLeft(t_player  *player)
 {
-    rotatePlayer(player, TO_LEFT, PLAYER_SPEED);
+    rotatePlayer(player, TO_LEFT, PLAYER_SPEED/2);
 }
 
 // void    turnUp(t_player  *player)
