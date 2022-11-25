@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:30:12 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 21:32:25 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 21:41:39 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@ void launch_ray(t_mlx *mlx, const t_vector *vector , float angleToRotate)
 }
 
 
-void    fire_rays(t_mlx *mlx, const t_vector *vector)
+void    fire_rays(t_mlx *mlx,  t_vector *vector)
 {
     int i;
 
     i = vector->direction - FOV/2;
-    while (i <= FOV)
+    while (i <= vector->direction + FOV/2)
     {
-        launch_ray(mlx->mlx, vector, i);
+        launch_ray(mlx, vector, i);
         i++;
-    }
-    
+    }    
 }
