@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:41:57 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 16:43:08 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 20:05:17 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void    launch_game(t_mlx *mlx)
     render_grid(mlx);
     renderPlayer(mlx, &player);
     eventPerceiver(mlx, &player);
+    keep_game_working(mlx);
 }
 
 int main ()
@@ -68,5 +69,4 @@ int main ()
 
     set_up_mlx(&mlx, "cub3d");
     launch_game(&mlx);
-    keep_game_working(&mlx);
 }

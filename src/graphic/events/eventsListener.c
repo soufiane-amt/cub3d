@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:18:31 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 19:58:00 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 20:03:20 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int     key_press(int keyCode, t_param *p)
     t_param *param;
 
     param = (t_param *)p;
-    printf("How it's been catched :%p\n", param->mlx->win);
     if (keyCode == MOVE_LEFT_KEY)
         moveLeft(param->player);
     else if (keyCode == MOVE_RIGHT_KEY)
@@ -40,7 +39,7 @@ int     key_press(int keyCode, t_param *p)
         turnRight(param->player);
     mlx_clear_window(param->mlx->mlx, param->mlx->win);
     render_grid(param->mlx);
-    // renderPlayer(param->mlx, param->player);
+    renderPlayer(param->mlx, param->player);
     return (0);
 }
 

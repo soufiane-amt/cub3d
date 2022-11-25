@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 22:41:33 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 16:30:27 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 20:08:33 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void    set_player_default_info(t_mlx *mlx, t_player *player)
 
     dimensions = ENTITY_SIZE;
     player->pos.origPoint = get_player_coordinates();
-    player->pos.direction = -90;
+    player->pos.direction = 0;
     player->pos.magnitude = RAY_LENGTH;
     player->img = mlx_xpm_file_to_image(mlx->mlx, AVATAR_IMG, &dimensions, &dimensions);
 } 

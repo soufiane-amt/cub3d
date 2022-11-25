@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 18:21:13 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 20:09:54 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 
 //FOV (Field of vision)
 #define FOV 60
-#define TO_LEFT  -1
-#define TO_RIGHT -1
+#define TO_LEFT   -1
+#define TO_RIGHT   1
 #define RAY_LENGTH 200
 
 //COLORS
@@ -47,6 +47,8 @@ extern char map[MAP_COL][MAP_RAW];
 //Relative paths
 #define AVATAR_IMG "./src/img/redCircle.xpm"
 
+//Player speed
+#define PLAYER_SPEED 10
 //Keys
 enum KEYS {
 	MOVE_LEFT_KEY = 0,
