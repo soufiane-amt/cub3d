@@ -2,6 +2,7 @@
     "files.associations": {
         "math.h": "c",
         "algorithm": "c",
-        "mlx.h": "c"
+        "mlx.h": "c",
+        "stdio.h": "c"
     }
 }
