@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:53:25 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 11:39:25 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 12:12:24 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,13 @@ typedef struct x
     int         a;
 }x;
 
-void    func(char *ptr)
+void    func(void *ptr)
 {
+    
     printf("haa l value : %s\n", ptr);
 }
 
 int main ()
 {
-    int a = 45;
-    float b = 4.4548745f;
-
-    int sum = a + b;
-    printf("%d\n", sum);
+    x   l;
 }

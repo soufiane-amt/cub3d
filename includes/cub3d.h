@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 11:49:20 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 11:51:37 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_vector
 {
     t_point         origPoint;
     float           direction;
-    int             magnitude;
+    float           magnitude;
 }   t_vector;
 
 

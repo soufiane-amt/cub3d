@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:18:31 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 22:20:35 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 12:11:24 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ int     key_press(int keyCode, void *p)
         turnRight(param->player);
     render_grid(param->mlx);
     renderPlayer(param->mlx, param->player);
+    return (0);
 }
 
 
 void    eventPerceiver(t_mlx *mlx, t_player *player)
 {
-    mlx_hook(mlx->win, 2, 0, key_press, (t_param *){mlx, player});
+    mlx_hook(mlx->win, 2, 0, key_press, (void *)((t_param *){mlx, player}));
 }
