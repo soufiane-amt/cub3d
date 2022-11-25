@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:41:57 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 15:50:35 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 16:43:08 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void    launch_game(t_mlx *mlx)
     set_player_default_info(mlx, &player);
     render_grid(mlx);
     renderPlayer(mlx, &player);
-    // eventPerceiver(mlx, &player);
+    eventPerceiver(mlx, &player);
 }
 
 int main ()

@@ -1,11 +1,14 @@
 #include <stdio.h>
 
 
-// typedef struct data
-// {
-//     int i;
-//     const int a ;
-// }D;
+typedef struct data
+{
+    int i;
+}D;
+typedef struct element
+{
+  D *Dptr;
+}element;
 
 // void    func(D d)
 // {
@@ -24,9 +27,23 @@
 //     // const D a = {.a=45, .i=444};
 //     // func((D){1, 1337});
 //     // printf("%d   %d\n", a.a, a.i);
+
+void  func(void *ptr)
+{
+  element *p;
+
+  p = (element *)ptr;
+  printf("%d\n", p->Dptr->i);
+}
+
 #include <stdio.h>  
 int main()   
 {  
-  if (1)  
-  printf("hello\n");
+  element *e;
+  element l;
+  D d;
+  e = &l;
+  d.i = 1337;
+  // e->Dptr = &d;
+  // func(e);
 }  
