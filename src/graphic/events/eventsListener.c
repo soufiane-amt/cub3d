@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:18:31 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 17:29:16 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 17:36:37 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,33 @@
 	// else if (keyCode == TURN_DOWN_KEY)
     //     turnDown(player);
     
+// int     key_press(int keyCode, t_param *p)
+// {
+//     t_param *param;
+
+//     param = (t_param *)p;
+//     printf("How it's been catched :%p\n", param->mlx->win);
+//     if (keyCode == MOVE_LEFT_KEY)
+//         moveLeft(param->player);
+//     else if (keyCode == MOVE_RIGHT_KEY)
+//         moveRight(param->player);
+//     else if (keyCode == MOVE_FRONT_KEY)
+//         moveFront(param->player);
+//     else if (keyCode == MOVE_BACK_KEY)
+//         moveBack(param->player);
+// 	else if (keyCode == TURN_LEFT_KEY)
+//         turnLeft(param->player);
+// 	else if (keyCode == TURN_RIGHT_KEY)
+//         turnRight(param->player);
+//     mlx_clear_window(param->mlx->mlx, param->mlx->win);
+//     // render_grid(param->mlx);
+//     // renderPlayer(param->mlx, param->player);
+//     return (0);
+// }
 int     key_press(int keyCode, t_param *p)
 {
-    t_param *param;
-
-    param = (t_param *)p;
-    printf("How it's been catched :%p\n", param->mlx->win);
-    if (keyCode == MOVE_LEFT_KEY)
-        moveLeft(param->player);
-    else if (keyCode == MOVE_RIGHT_KEY)
-        moveRight(param->player);
-    else if (keyCode == MOVE_FRONT_KEY)
-        moveFront(param->player);
-    else if (keyCode == MOVE_BACK_KEY)
-        moveBack(param->player);
-	else if (keyCode == TURN_LEFT_KEY)
-        turnLeft(param->player);
-	else if (keyCode == TURN_RIGHT_KEY)
-        turnRight(param->player);
-    mlx_clear_window(param->mlx->mlx, param->mlx->win);
-    // render_grid(param->mlx);
-    // renderPlayer(param->mlx, param->player);
+    (void)keyCode;
+    printf("-->after : %p", p->mlx);
     return (0);
 }
 
