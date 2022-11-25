@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 22:41:33 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 11:49:23 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 16:30:27 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,31 @@
 
 t_point get_player_coordinates ()
 {
-    int i;
-    int j;
+    int y;
+    int x;
 
-    i = 0;
-    while (i < MAP_COL)
+    y = 1;
+    while (y < MAP_COL)
     {
-        j = 0;
-        while (j < MAP_RAW)
+        x = 1;
+        while (x < MAP_RAW)
         {
-            if (map[i][j] == 'N')
-                break;
-            j++;
+            if (map[y][x] == 'N')
+                return ((t_point){.X=x * ENTITY_SIZE , .Y=y * ENTITY_SIZE });
+            x++;
         }
-        i++;
+        y++;
     }
-    return ((t_point){i, j});
+    return ((t_point){.X=x * ENTITY_SIZE , .Y=y * ENTITY_SIZE });
 }
 
 void    set_player_default_info(t_mlx *mlx, t_player *player)
 {
+    int dimensions;
+
+    dimensions = ENTITY_SIZE;
     player->pos.origPoint = get_player_coordinates();
-    player->pos.direction = 90;
+    player->pos.direction = -90;
     player->pos.magnitude = RAY_LENGTH;
-    player->img = mlx_xpm_file_to_image(mlx->mlx, AVATAR_IMG, &player->pos.origPoint.X, &player->pos.origPoint.Y);
+    player->img = mlx_xpm_file_to_image(mlx->mlx, AVATAR_IMG, &dimensions, &dimensions);
 } 

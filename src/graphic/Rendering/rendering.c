@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 11:54:04 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 16:29:41 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void draw_rectangle(t_mlx *mlx, t_point point, int COLOR)
         j = 0;
         while (j < ENTITY_SIZE)
         {
-            mlx_pixel_put(mlx->mlx, mlx->win, point.X + j, point.Y + i, COLOR);
+            mlx_pixel_put(mlx->mlx, mlx->win, point.X + i, point.Y + j, COLOR);
             j++;
         }
         i++;
@@ -57,29 +57,30 @@ void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
 
 void    render_grid(t_mlx *mlx)
 {
-    int i;
-    int j;
+    int y;
+    int x;
 
-    mlx_destroy_window(mlx->mlx, mlx->win);
-    i = 0;
-    while (i < MAP_COL)
+    y = 0;
+    while (y < MAP_COL)
     {
-        j = 0;
-        while (j < MAP_RAW)
+        x = 0;
+        while (x < MAP_RAW)
         {
-            if (map[i][j] == '1')
-                draw_rectangle(mlx, (t_point){.X=i * ENTITY_SIZE,  .Y=j * ENTITY_SIZE}, BLUE);
-            else if (map[i][j] == '0')
-                draw_rectangle(mlx, (t_point){.X=i * ENTITY_SIZE,  .Y=j * ENTITY_SIZE}, BLACK);
-            j++;
+            if (map[y][x] == '1')
+                draw_rectangle(mlx, (t_point){.X=x * ENTITY_SIZE,  .Y=y * ENTITY_SIZE}, BLUE);
+            // else if (map[y][x] == '0')
+            //     draw_rectangle(mlx, (t_point){.X=x * ENTITY_SIZE,  .Y=y * ENTITY_SIZE}, BLA);
+            x++;
         }
-        i++;
+        y++;
     }
 }
 
 void    renderPlayer(t_mlx *mlx, t_player *player)
 {
+    (void)mlx;(void)player;
+    printPlayerData(player);
     mlx_put_image_to_window(mlx->mlx, mlx->win, player->img,
         player->pos.origPoint.X, player->pos.origPoint.Y);
-    launch_ray(mlx, &player->pos, player->pos.direction);
+    launch_ray(mlx, &player->pos, 0);
 }

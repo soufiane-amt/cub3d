@@ -6,21 +6,31 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:41:57 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 23:24:45 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 15:50:35 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 char map[MAP_COL][MAP_RAW] = {{'1', '1', '1', '1', '1', '1', '1'},
-                {'1', '0', '0', '0', '0', '0', '1'},
-                {'1', '0', '0', '0', '0', '0', '1'},
-                {'1', '0', '1', '0', '0', '0', '1'},
-                {'1', '0', '0', '0', '0', '0', '1'},
-                {'1', '0', '0', '0', '0', '0', '1'},
-                {'1', '0', '0', '0', 'N', '0', '1'},
-                {'1', '1', '1', '1', '1', '1', '1'}};
+                              {'1', '0', '0', '0', '0', '0', '1'},
+                              {'1', '0', '0', '0', '0', '0', '1'},
+                              {'1', '0', '1', '0', '0', '0', '1'},
+                              {'1', '0', '0', '0', '0', '0', '1'},
+                              {'1', '0', '0', '0', '0', '0', '1'},
+                              {'1', '0', '0', '0', 'N', '0', '1'},
+                              {'1', '1', '1', '1', '1', '1', '1'}};
 
+
+int    printPlayerData(t_player *player)
+{
+    printf("Player vector :\n");
+    printf("Player X : %d\n", player->pos.origPoint.X);
+    printf("Player Y : %d\n", player->pos.origPoint.Y);
+    printf("Player magnitude : %f\n", player->pos.magnitude);
+    printf("Player Direction : %f\n", player->pos.direction);
+    return 0;
+}
 
 void    keep_game_working(t_mlx *mlx)
 {
@@ -46,8 +56,10 @@ void    launch_game(t_mlx *mlx)
 {
     t_player    player;
 
-    
-    eventPerceiver(mlx, &player);
+    set_player_default_info(mlx, &player);
+    render_grid(mlx);
+    renderPlayer(mlx, &player);
+    // eventPerceiver(mlx, &player);
 }
 
 int main ()

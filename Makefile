@@ -6,17 +6,17 @@
 #    By: samajat <samajat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 11:25:40 by samajat           #+#    #+#              #
-#    Updated: 2022/11/25 12:05:43 by samajat          ###   ########.fr        #
+#    Updated: 2022/11/25 15:38:51 by samajat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
-CC = cc
+CC = gcc
 
 inc = -I includes/
 
-CFLAGS =  -Wall -Wextra -Werror  -I includes/
+CFLAGS =  -Wall -Wextra -Werror $(inc)
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
@@ -25,31 +25,31 @@ RM =  rm -rf
 DEFAULTSRC = $(addprefix default_settings/, set_player_to_default)
 
 GRSRC = $(addprefix graphic/rendering/, rendering)\
-	 	$(addprefix graphic/eventsListener/, eventsListener , movesListener,  rotationsListener)\
- 		$(addprefix graphic/rayCasting/, rays)\
-		$(addprefix graphic/, player)
+	$(addprefix graphic/rayCasting/, rays)\
+	$(addprefix graphic/, player)\
+	$(addprefix graphic/events/, movesListener eventsListener  rotationsListener)\
 		
 MSRC = $(addprefix math/, math)
 
-SRC = cub3d $(GRSRC) $(MSRC) $(DEFAULTSRC)
+SRC = cub3d $(MSRC) $(DEFAULTSRC) $(GRSRC) 
 
-HEADERS = cub3d.h
+HEADERS = includes/cub3d.h
 
 
 OBJ = $(addprefix src/,  $(SRC:=.o))
 
 $(NAME) : $(OBJ)
-	$(CC) $(FLAGS) $(MLXFLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(FLAGS)  $(MLXFLAGS) $(OBJ) -o $(NAME)
 
 all : $(NAME)
 
-%.o : %.c $(HEADERS)
-	$(CC) -c $< -o $@ $(inc)
+%.o:%.c $(HEADERS)
+	@$(CC) -c $< -o $@ $(CFLAGS) $(inc)  -g
 	
 clean :
-	$(RM) $(OBJ)
+	@$(RM) $(OBJ)
 
 fclean : clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re : fclean all

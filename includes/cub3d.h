@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 11:51:37 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 16:00:19 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 
 //MAP
 #define MAP_RAW 7
-#define VECT_LEN 50
 #define MAP_COL 8
 #define ENTITY_SIZE 50
 
@@ -46,7 +45,7 @@
 extern char map[MAP_COL][MAP_RAW];
 
 //Relative paths
-#define AVATAR_IMG "./img/redCircle.xpm"
+#define AVATAR_IMG "./src/img/redCircle.xpm"
 
 //Keys
 enum KEYS {
@@ -97,6 +96,12 @@ typedef struct s_param
     t_player    *player;
 }t_param;
 
+
+
+
+//Temp
+int    printPlayerData(t_player *parm);
+
 //Pixel manipulation funcs
 void    draw_line(t_mlx *mlx,  t_point point1,  t_point point2);
 void    launch_ray(t_mlx *mlx, const t_vector *vector , float angleToRotate);
@@ -127,5 +132,7 @@ void    eventPerceiver(t_mlx *mlx, t_player *player);
 
 //set to default
 void    set_player_default_info(t_mlx *mlx, t_player *player);
+
+
 
 #endif

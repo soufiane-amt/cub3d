@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:18:31 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 12:11:24 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 13:21:33 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int     key_press(int keyCode, void *p)
         turnLeft(param->player);
 	else if (keyCode == TURN_RIGHT_KEY)
         turnRight(param->player);
+    mlx_destroy_window(param->mlx->mlx, param->mlx->win);
     render_grid(param->mlx);
     renderPlayer(param->mlx, param->player);
     return (0);
@@ -45,5 +46,5 @@ int     key_press(int keyCode, void *p)
 
 void    eventPerceiver(t_mlx *mlx, t_player *player)
 {
-    mlx_hook(mlx->win, 2, 0, key_press, (void *)((t_param *){mlx, player}));
+    mlx_hook(mlx->win, 2, 0, key_press, (&(t_param){mlx, player}));
 }
