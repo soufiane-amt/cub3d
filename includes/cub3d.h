@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 20:09:54 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 20:21:02 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void    moveBack(t_player  *player);
 
 //Rotation Listener
 void    turnRight(t_player  *player);
+// void    turnRight(t_player  *player);
 void    turnLeft(t_player  *player);
 void    turnUp  (t_player  *player);
 void    turnDown(t_player  *player);
