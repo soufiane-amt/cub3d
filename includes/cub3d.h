@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 20:21:02 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 21:25:55 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ extern char map[MAP_COL][MAP_RAW];
 #define AVATAR_IMG "./src/img/redCircle.xpm"
 
 //Player speed
-#define PLAYER_SPEED 10
+#define PLAYER_SPEED 8
 //Keys
 enum KEYS {
 	MOVE_LEFT_KEY = 0,
@@ -120,6 +120,7 @@ void    moveLeft(t_player  *player);
 void    moveRight(t_player  *player);
 void    moveFront(t_player  *player);
 void    moveBack(t_player  *player);
+int     move_is_valid (t_point  dstPoint);
 
 //Rotation Listener
 void    turnRight(t_player  *player);

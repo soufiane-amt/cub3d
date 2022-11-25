@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 20:29:32 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 21:26:29 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
     int i = 0;
     while ( i <= steps)
     {
+        if (!move_is_valid((t_point){X, Y}))
+            break;
         mlx_pixel_put(mlx->mlx, mlx->win, X, Y, RED);
         X += Xinc;
         Y += Yinc;
