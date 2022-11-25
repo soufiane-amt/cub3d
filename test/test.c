@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 22:42:02 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 21:42:11 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 11:46:46 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ float convert_degree_to_radian(float dgreeValue)
     return (dgreeValue * M_PI/180.0);
 }
 
-void rotate(void *mlx, void *win, int a, int b, int x, int y , float angle)
+void rotate(void *mlx, void *win, int a, int b, float angle)
 {
     // int x , y;
     angle = convert_degree_to_radian(angle);
@@ -258,8 +258,10 @@ int main ()
     // draw_triangle(mlx, win, 6 * ENTITY_SIZE, 5 * ENTITY_SIZE);
     
     draw_line(mlx, win, 500, 600, 500 + cos(angleR) * 100 , 600 + sin(angleR) * 100 );    
-    rotate(mlx, win , 500, 600, 0 , 0 , angleD    - 30  );
-    rotate(mlx, win , 500, 600, 0 , 0 , angleD   + 30  );
+    rotate(mlx, win , 500, 600, angleD    - 30  );
+    rotate(mlx, win , 500, 600, angleD   + 30  );
+    rotate(mlx, win , 500, 600, angleD    - 30  );
+    rotate(mlx, win , 500, 600, angleD   + 30  );
     // int i = angleD - 30;
     // while (i <= angleD + 30)
     // {

@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/24 23:42:17 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 11:49:20 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 extern char map[MAP_COL][MAP_RAW];
 
 //Relative paths
-#define AVATAR_IMG "./img/redCircle.xpm",
+#define AVATAR_IMG "./img/redCircle.xpm"
 
 //Keys
 enum KEYS {
@@ -71,8 +71,8 @@ typedef struct s_mlx
 
 typedef struct s_point
 {
-    float   X;
-    float   Y;
+    int   X;
+    int   Y;
 }   t_point;
 
 typedef struct s_vector
@@ -126,6 +126,6 @@ void    renderPlayer(t_mlx *mlx, t_player *player);
 void    eventPerceiver(t_mlx *mlx, t_player *player);
 
 //set to default
-void    set_player_default_info(t_player *player);
+void    set_player_default_info(t_mlx *mlx, t_player *player);
 
 #endif
