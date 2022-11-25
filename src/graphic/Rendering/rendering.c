@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 21:26:29 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/25 21:32:38 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void    renderPlayer(t_mlx *mlx, t_player *player)
 {
     (void)mlx;(void)player;
     printPlayerData(player);
-    launch_ray(mlx, &player->pos, 0);
+    // launch_ray(mlx, &player->pos, 0);
+    fire_rays(mlx->mlx, &player->pos);
 }
