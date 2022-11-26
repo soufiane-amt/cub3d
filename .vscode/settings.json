@@ -3,6 +3,7 @@
         "math.h": "c",
         "algorithm": "c",
         "mlx.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "cmath": "c"
     }
 }

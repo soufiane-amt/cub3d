@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 21:35:45 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/26 14:57:09 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,6 @@ void draw_rectangle(t_mlx *mlx, t_point point, int COLOR)
     }
 }
 
-void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
-{
-    int dx = point2.X - point1.X;
-    int dy = point2.Y - point1.Y;
- 
-    int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
- 
-    float Xinc = dx / (float)steps;
-    float Yinc = dy / (float)steps;
- 
-    float X = point1.X;
-    float Y = point1.Y;
-    int i = 0;
-    while ( i <= steps)
-    {
-        if (!move_is_valid((t_point){X, Y}))
-            break;
-        mlx_pixel_put(mlx->mlx, mlx->win, X, Y, RED);
-        X += Xinc;
-        Y += Yinc;
-        i++;
-    }
-}
 
 
 void    render_grid(t_mlx *mlx)
@@ -70,8 +47,6 @@ void    render_grid(t_mlx *mlx)
         {
             if (map[y][x] == '1')
                 draw_rectangle(mlx, (t_point){.X=x * ENTITY_SIZE,  .Y=y * ENTITY_SIZE}, BLUE);
-            // else if (map[y][x] == '0')
-            //     draw_rectangle(mlx, (t_point){.X=x * ENTITY_SIZE,  .Y=y * ENTITY_SIZE}, BLA);
             x++;
         }
         y++;

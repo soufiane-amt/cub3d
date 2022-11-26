@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 22:41:33 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 20:28:29 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/26 15:22:27 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ t_point get_player_coordinates ()
 
 void    set_player_default_info(t_mlx *mlx, t_player *player)
 {
-    int dimensions;
+    // int dimensions;
 
-    dimensions = ENTITY_SIZE;
+    // dimensions = ENTITY_SIZE;
+    (void)mlx;
     player->pos.origPoint = get_player_coordinates();
     player->pos.direction = -90;
     player->pos.magnitude = RAY_LENGTH;
-    player->img = mlx_xpm_file_to_image(mlx->mlx, AVATAR_IMG, &dimensions, &dimensions);
+    // player->img = mlx_xpm_file_to_image(mlx->mlx, AVATAR_IMG, &dimensions, &dimensions);
 } 

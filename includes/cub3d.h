@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 22:36:11 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/26 20:00:30 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,24 @@
 
 
 
-//Window
-#define WINDOW_SIZEX 1000
-#define WINDOW_SIZEY 1000
 
 //MAP
 #define MAP_RAW 7
 #define MAP_COL 8
+// #define MAP_RAW 33
+// #define MAP_COL 14
 #define ENTITY_SIZE 50
+
+
+//Window
+#define WINDOW_SIZEX MAP_RAW * ENTITY_SIZE
+#define WINDOW_SIZEY MAP_COL * ENTITY_SIZE
 
 //FOV (Field of vision)
 #define FOV 60
 #define TO_LEFT   -1
 #define TO_RIGHT   1
-#define RAY_LENGTH 400
+#define RAY_LENGTH 200
 
 //COLORS
 #define RED   0xff00000
