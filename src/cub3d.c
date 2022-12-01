@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:41:57 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/26 20:00:46 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:19:18 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,10 @@ void    set_up_mlx(t_mlx    *mlx, char* title)
     mlx->win = mlx_new_window(mlx->mlx, WINDOW_SIZEX, WINDOW_SIZEY, title);
     if (!mlx->win)
         exit(1);
+    mlx->img.img = mlx_new_image(mlx->mlx, WINDOW_SIZEX, WINDOW_SIZEY);
+    mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bpp,
+        &mlx->img.line_len, &mlx->img.endian);
 }
-    // mlx->player_img = mlx_xpm_file_to_image(mlx->mlx, AVATAR_IMG, 0, 0);
-
-    // t_vector vector = {.origPoint = (t_point){500, 500}, -90, 200};
-
-    // launch_ray(mlx, &vector , -90 );
 
 void    launch_game(t_mlx *mlx)
 {
@@ -82,4 +80,5 @@ int main ()
 
     set_up_mlx(&mlx, "cub3d");
     launch_game(&mlx);
+    // keep_game_working(&mlx);
 }

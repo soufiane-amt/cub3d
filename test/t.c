@@ -10,7 +10,7 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -31,7 +31,7 @@ int	main(void)
   int   i = 0;
   while (i < 1000)
   {
-	  my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	  my_my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
     i++;
   }
 	  mlx_put_image_to_window(mlx, mlx_win, img.img, i, i);

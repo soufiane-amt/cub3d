@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/26 20:00:30 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:05:58 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,22 @@ enum KEYS {
 };
 
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
+
+
 //Data structures
 typedef struct s_mlx
 {
     void    *mlx;
     void    *win;
+    t_img   img;
 }   t_mlx;
 
 
@@ -115,6 +126,7 @@ void    fire_rays(t_mlx *mlx,  t_vector *vector);
 
 //Rendering functions
 void    render_grid(t_mlx *mlx);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 
 //Math funcs

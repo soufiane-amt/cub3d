@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 22:42:02 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 11:46:46 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/30 17:31:38 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char map[MAP_COL][MAP_RAW] = {{'1', '1', '1', '1', '1', '1', '1'},
 //         j = 0;
 //         while (j < ENTITY_SIZE)
 //         {
-//             mlx_pixel_put(mlx, win, x + j, y + i, BLUE);
+//             my_mlx_pixel_put(mlx, win, x + j, y + i, BLUE);
 //             j++;
 //         }
 //         i++;
@@ -71,7 +71,7 @@ void draw_line(void *mlx, void *win, int X0, int Y0, int X1, int Y1)
     float X = X0;
     float Y = Y0;
     for (int i = 0; i <= steps; i++) {
-        mlx_pixel_put(mlx, win, X, Y, RED); // put pixel at (X,Y)
+        my_mlx_pixel_put(mlx, win, X, Y, RED); // put pixel at (X,Y)
         X += Xinc; // increment in x at each step
         Y += Yinc; // increment in y at each step
     }
@@ -164,7 +164,7 @@ int	key_hook(int keycode)
     printf ("%d\n", keycode);
 	return (0);
 }
-
+#include <limits.h>
 int main ()
 {
     // {
@@ -248,27 +248,26 @@ int main ()
     {
     void *mlx;
     void *win;
-    double angleD = 90;
-    double angleR = convert_degree_to_radian(angleD);
     // double angle = 90;
     // double angle = 3*M_PI/2 - ((((3*M_PI/2) - M_PI)) / 2);
 
     mlx = mlx_init();
     win = mlx_new_window(mlx, 1000, 1000, "TEST");
-    // draw_triangle(mlx, win, 6 * ENTITY_SIZE, 5 * ENTITY_SIZE);
+    void    *img = mlx_new_image(mlx, 100, 100);
+    int bits_per_pixel, size_line, endian;
+    char *info = mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
+    (void)info;
+    // int color = 1 << 9;
+    for (size_t i = 0; i < 255*4; i++)
+    {
+        for (size_t j = 0; j < 255*4; j++)
+        {
+            my_mlx_pixel_put(mlx, win, 500, j, i);
+            /* code */
+        }
+        
+    }
     
-    draw_line(mlx, win, 500, 600, 500 + cos(angleR) * 100 , 600 + sin(angleR) * 100 );    
-    rotate(mlx, win , 500, 600, angleD    - 30  );
-    rotate(mlx, win , 500, 600, angleD   + 30  );
-    rotate(mlx, win , 500, 600, angleD    - 30  );
-    rotate(mlx, win , 500, 600, angleD   + 30  );
-    // int i = angleD - 30;
-    // while (i <= angleD + 30)
-    // {
-    //     rotate(mlx, win , 500, 600, 0 , 0 , angleD + i);
-    //     i++;
-    // }
-    mlx_key_hook(win, key_hook, NULL);    
     mlx_loop(mlx);
     }
 }

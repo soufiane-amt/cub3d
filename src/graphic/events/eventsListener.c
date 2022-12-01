@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:18:31 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 20:21:11 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/01 10:51:43 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,42 @@
 
 //A function implemented to respond to user Actions (events)
 
-
-	// else if (keyCode == TURN_UP_KEY)
-    //     turnUp(player);
-	// else if (keyCode == TURN_DOWN_KEY)
-    //     turnDown(player);
-    
-int     key_press(int keyCode, t_param *p)
+int     key_press(int keyCode, t_player *player)
 {
-    t_param *param;
-
-    param = (t_param *)p;
     if (keyCode == MOVE_LEFT_KEY)
-        moveLeft(param->player);
+        moveLeft(player);
     else if (keyCode == MOVE_RIGHT_KEY)
-        moveRight(param->player);
+        moveRight(player);
     else if (keyCode == MOVE_FRONT_KEY)
-        moveFront(param->player);
+        moveFront(player);
     else if (keyCode == MOVE_BACK_KEY)
-        moveBack(param->player);
+        moveBack(player);
 	else if (keyCode == TURN_LEFT_KEY)
-        turnLeft(param->player);
+        turnLeft(player);
 	else if (keyCode == TURN_RIGHT_KEY)
-        turnRight(param->player);
-    mlx_clear_window(param->mlx->mlx, param->mlx->win);
-    render_grid(param->mlx);
-    renderPlayer(param->mlx, param->player);
+        turnRight(player);
     return (0);
 }
 
-// int     key_press(int keyCode,t_param *p)
-// {
-//     (void)keyCode;
-//     printf("-->after : %p\n", p);
-//     return (0);
-// }
+void    reform_map(t_mlx *mlx, t_player *player)
+{
+    mlx_clear_window(mlx->mlx, mlx->win);
+    mlx_destroy_image(mlx->mlx, mlx->img.img);
+    mlx->img.img = mlx_new_image(mlx->mlx, WINDOW_SIZEX, WINDOW_SIZEY);
+    mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bpp,
+        &mlx->img.line_len, &mlx->img.endian);
+
+    render_grid(mlx);
+    renderPlayer(mlx, player);
+}
+
+
+int events_catcher(int keyCode, t_param *param)
+{
+    key_press(keyCode, param->player);
+    reform_map(param->mlx, param->player);
+    return (0);
+}
 
 void    eventPerceiver(t_mlx *mlx, t_player *player)
 {
@@ -56,6 +57,6 @@ void    eventPerceiver(t_mlx *mlx, t_player *player)
     
     param->mlx = mlx;
     param->player = player;
-    mlx_hook(mlx->win, 2, 0, key_press, param);
+    mlx_hook(mlx->win, 2, 0, events_catcher, param);
     //param is to be freed at the exit
 }

@@ -6,31 +6,14 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/26 14:57:09 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/01 10:55:10 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 
-//temp
-void draw_rectangle(t_mlx *mlx, t_point point, int COLOR)
-{
-    int i;
-    int j;
 
-    i = 0;
-    while (i < ENTITY_SIZE)
-    {
-        j = 0;
-        while (j < ENTITY_SIZE)
-        {
-            mlx_pixel_put(mlx->mlx, mlx->win, point.X + i, point.Y + j, COLOR);
-            j++;
-        }
-        i++;
-    }
-}
 
 
 
@@ -59,6 +42,7 @@ void    renderPlayer(t_mlx *mlx, t_player *player)
 {
     (void)mlx;(void)player;
     printPlayerData(player);
-    // launch_ray(mlx, &player->pos, 0);
-    fire_rays(mlx->mlx, &player->pos);
+    launch_ray(mlx, &player->pos, 0);
+    mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
+    // fire_rays(mlx->mlx, &player->pos);
 }

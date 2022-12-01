@@ -4,6 +4,11 @@
         "algorithm": "c",
         "mlx.h": "c",
         "stdio.h": "c",
-        "cmath": "c"
+        "cmath": "c",
+        "__bit_reference": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "unordered_map": "c",
+        "type_traits": "c"
     }
 }

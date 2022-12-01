@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:30:12 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/26 14:42:55 by samajat          ###   ########.fr       */
+/*   Updated: 2022/11/30 17:37:19 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
     {
         if (!move_is_valid((t_point){X, Y}))
             break;
-        mlx_pixel_put(mlx->mlx, mlx->win, X, Y, RED);
+        my_mlx_pixel_put(&mlx->img, X, Y, RED);
         X += Xinc;
         Y += Yinc;
         i++;
