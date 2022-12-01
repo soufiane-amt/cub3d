@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:02:04 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/29 16:22:53 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/01 11:23:04 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,10 @@ void    moveFront(t_player  *player)
 {
     t_point dstPoint;
 
-    // dstPoint.X = player->pos.origPoint.X;
+    dstPoint.X = player->pos.origPoint.X;
     dstPoint.Y = player->pos.origPoint.Y - PLAYER_SPEED;
-    // player->pos.origPoint.X += cos(convert_degree_to_radian(player->pos.direction));
-    // player->pos.origPoint.Y += sin(convert_degree_to_radian(player->pos.direction));
     if (move_is_valid(dstPoint))
         player->pos.origPoint.Y-=PLAYER_SPEED;
-    // player->pos.direction;
 }
 
 void    moveBack(t_player  *player)

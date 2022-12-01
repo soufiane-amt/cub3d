@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/30 18:05:58 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/01 11:07:54 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,8 @@ void    eventPerceiver(t_mlx *mlx, t_player *player);
 //set to default
 void    set_player_default_info(t_mlx *mlx, t_player *player);
 
+//image
+void draw_rectangle(t_mlx *mlx, t_point point, int COLOR);
 
 
 #endif
