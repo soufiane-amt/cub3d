@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:18:31 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/01 10:51:43 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/01 11:25:07 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void    reform_map(t_mlx *mlx, t_player *player)
     mlx->img.img = mlx_new_image(mlx->mlx, WINDOW_SIZEX, WINDOW_SIZEY);
     mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bpp,
         &mlx->img.line_len, &mlx->img.endian);
-
+    mlx->img = ft_creat_an_image(mlx);
     render_grid(mlx);
     renderPlayer(mlx, player);
 }
