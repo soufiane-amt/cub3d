@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:30:12 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/02 13:24:35 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/02 21:31:37 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
 {
-    float dx = point2.X - point1.X;
-    float dy = point2.Y - point1.Y;
+    double dx = point2.X - point1.X;
+    double dy = point2.Y - point1.Y;
  
-    float steps = fabs(dx) > fabs(dy) ? fabs(dx) : fabs(dy);
+    double steps = fabs(dx) > fabs(dy) ? fabs(dx) : fabs(dy);
  
-    float Xinc = dx / (float)steps;
-    float Yinc = dy / (float)steps;
+    double Xinc = dx / (double)steps;
+    double Yinc = dy / (double)steps;
  
-    float X = point1.X;
-    float Y = point1.Y;
+    double X = point1.X;
+    double Y = point1.Y;
     int i = 0;
     while ( i <= steps)
     {
@@ -37,7 +37,7 @@ void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
     }
 }
 
-void launch_ray(t_mlx *mlx, const t_vector *vector , float angleToRotate)
+void launch_ray(t_mlx *mlx, const t_vector *vector , double angleToRotate)
 {
     angleToRotate = convert_degree_to_radian(vector->direction + angleToRotate);
     
@@ -54,6 +54,6 @@ void    fire_rays(t_mlx *mlx,  t_vector *vector)
     while (i <= FOV/2)
     {
         launch_ray(mlx, vector, i);
-        i += 1.0f;
+        i += 0.01f;
     }
 }

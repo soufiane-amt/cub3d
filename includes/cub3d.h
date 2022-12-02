@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/02 12:46:42 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/02 20:56:35 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 
 
 //MAP
-#define MAP_RAW 7
-#define MAP_COL 8
-// #define MAP_RAW 33
-// #define MAP_COL 14
+// #define MAP_RAW 7
+// #define MAP_COL 8
+#define MAP_RAW 33
+#define MAP_COL 14
 #define ENTITY_SIZE 50
 
 
@@ -94,8 +94,8 @@ typedef struct s_point
 typedef struct s_vector
 {
     t_point         origPoint;
-    float           direction;
-    float           magnitude;
+    double          direction;
+    double          magnitude;
 }   t_vector;
 
 
@@ -121,7 +121,7 @@ int    printPlayerData(t_player *parm);
 
 //Pixel manipulation funcs
 void    draw_line(t_mlx *mlx,  t_point point1,  t_point point2);
-void    launch_ray(t_mlx *mlx, const t_vector *vector , float angleToRotate);
+void    launch_ray(t_mlx *mlx, const t_vector *vector , double angleToRotate);
 void    fire_rays(t_mlx *mlx,  t_vector *vector);
 
 //Rendering functions
@@ -130,7 +130,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 
 //Math funcs
-float convert_degree_to_radian(float dgreeValue);
+double convert_degree_to_radian(double dgreeValue);
 
 //Moves Listener
 void    moveLeft(t_player  *player);
@@ -141,11 +141,10 @@ int     move_is_valid (t_point  dstPoint);
 
 //Rotation Listener
 void    turnRight(t_player  *player);
-// void    turnRight(t_player  *player);
 void    turnLeft(t_player  *player);
 void    turnUp  (t_player  *player);
 void    turnDown(t_player  *player);
-void    rotatePlayer (t_player *player , int dir, float angleToRotate);
+void    rotatePlayer (t_player *player , int dir, double angleToRotate);
 void    renderPlayer(t_mlx *mlx, t_player *player);
 
 //main events func

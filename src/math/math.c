@@ -6,13 +6,13 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 21:08:31 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/23 21:08:38 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/02 15:38:34 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-float convert_degree_to_radian(float dgreeValue)
+double convert_degree_to_radian(double dgreeValue)
 {
     return (dgreeValue * M_PI/180.0);
 }
