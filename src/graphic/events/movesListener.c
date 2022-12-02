@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:02:04 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/01 11:23:04 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/02 14:45:34 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,40 +25,75 @@ int     move_is_valid (t_point  dstPoint)
     return 0;
 }
 
+// void    moveLeft(t_player  *player)
+// {
+//     t_point dstPoint;
+
+//     dstPoint.X = player->pos.origPoint.X - PLAYER_SPEED;
+//     dstPoint.Y = player->pos.origPoint.Y;
+//     if (move_is_valid(dstPoint))
+//         player->pos.origPoint.X-=PLAYER_SPEED;
+// }
+// void    moveRight(t_player  *player)
+// {
+//     t_point dstPoint;
+
+//     dstPoint.X = player->pos.origPoint.X + PLAYER_SPEED;
+//     dstPoint.Y = player->pos.origPoint.Y;
+//     if (move_is_valid(dstPoint))
+//         player->pos.origPoint.X+=PLAYER_SPEED;
+// }
+// void    moveFront(t_player  *player)
+// {
+//     t_point dstPoint;
+
+//     dstPoint.X = player->pos.origPoint.X;
+//     dstPoint.Y = player->pos.origPoint.Y - PLAYER_SPEED;
+//     if (move_is_valid(dstPoint))
+//         player->pos.origPoint.Y-=PLAYER_SPEED;
+// }
+
+// void    moveBack(t_player  *player)
+// {
+//     t_point dstPoint;
+
+//     dstPoint.X = player->pos.origPoint.X;
+//     dstPoint.Y = player->pos.origPoint.Y + PLAYER_SPEED;
+//     if (move_is_valid(dstPoint))
+//         player->pos.origPoint.Y+=PLAYER_SPEED;
+// }
 void    moveLeft(t_player  *player)
 {
-    t_point dstPoint;
+    // t_point dstPoint;
+    float   radian;
 
-    dstPoint.X = player->pos.origPoint.X - PLAYER_SPEED;
-    dstPoint.Y = player->pos.origPoint.Y;
-    if (move_is_valid(dstPoint))
-        player->pos.origPoint.X-=PLAYER_SPEED;
+    radian = convert_degree_to_radian(player->pos.direction + 90);
+    player->pos.origPoint.X -= (PLAYER_SPEED * cos(radian));
+    player->pos.origPoint.Y -= (PLAYER_SPEED * sin(radian));
 }
 void    moveRight(t_player  *player)
 {
-    t_point dstPoint;
+    float   radian;
 
-    dstPoint.X = player->pos.origPoint.X + PLAYER_SPEED;
-    dstPoint.Y = player->pos.origPoint.Y;
-    if (move_is_valid(dstPoint))
-        player->pos.origPoint.X+=PLAYER_SPEED;
-}
-void    moveFront(t_player  *player)
-{
-    t_point dstPoint;
-
-    dstPoint.X = player->pos.origPoint.X;
-    dstPoint.Y = player->pos.origPoint.Y - PLAYER_SPEED;
-    if (move_is_valid(dstPoint))
-        player->pos.origPoint.Y-=PLAYER_SPEED;
+    radian = convert_degree_to_radian(player->pos.direction + 90);
+    player->pos.origPoint.X += (PLAYER_SPEED * cos(radian));
+    player->pos.origPoint.Y += (PLAYER_SPEED * sin(radian));
 }
 
 void    moveBack(t_player  *player)
 {
-    t_point dstPoint;
+    float   radian;
 
-    dstPoint.X = player->pos.origPoint.X;
-    dstPoint.Y = player->pos.origPoint.Y + PLAYER_SPEED;
-    if (move_is_valid(dstPoint))
-        player->pos.origPoint.Y+=PLAYER_SPEED;
+    radian = convert_degree_to_radian(player->pos.direction);
+    player->pos.origPoint.X -= (PLAYER_SPEED * cos(radian));
+    player->pos.origPoint.Y -= (PLAYER_SPEED * sin(radian));
+}
+
+void    moveFront(t_player  *player)
+{
+    float   radian;
+
+    radian = convert_degree_to_radian(player->pos.direction);
+    player->pos.origPoint.X += (PLAYER_SPEED * cos(radian));
+    player->pos.origPoint.Y += (PLAYER_SPEED * sin(radian));
 }

@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/01 11:25:21 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/02 12:46:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 #define FOV 60
 #define TO_LEFT   -1
 #define TO_RIGHT   1
-#define RAY_LENGTH 200
+#define RAY_LENGTH WINDOW_SIZEX
 
 //COLORS
 #define RED   0xff00000
@@ -159,4 +159,6 @@ void 	draw_rectangle(t_mlx *mlx, t_point point, int COLOR);
 t_img	ft_creat_an_image(t_mlx *mlx);
 
 
+//exit
+void	exit_game(t_mlx	*mlx);
 #endif

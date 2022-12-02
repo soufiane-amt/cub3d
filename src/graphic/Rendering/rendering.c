@@ -6,13 +6,11 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:20:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/01 11:08:16 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/02 13:18:56 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 
 void    render_grid(t_mlx *mlx)
@@ -34,13 +32,12 @@ void    render_grid(t_mlx *mlx)
     }
 }
 
-    // mlx_put_image_to_window(mlx->mlx, mlx->win, player->img,
-    //     player->pos.origPoint.X, player->pos.origPoint.Y);
+
 void    renderPlayer(t_mlx *mlx, t_player *player)
 {
     (void)mlx;(void)player;
     printPlayerData(player);
-    launch_ray(mlx, &player->pos, 0);
+    // launch_ray(mlx, &player->pos, 0);
+    fire_rays(mlx, &player->pos);
     mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img, 0, 0);
-    // fire_rays(mlx->mlx, &player->pos);
 }
