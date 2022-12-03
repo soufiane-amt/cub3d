@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 22:08:30 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/03 22:22:48 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ t_point get_ray_last_intersection_with_vectrics(const   t_vector    *ray)
     int     ystep;
     t_point first_point;
 
+    first_point = get_first_intersection_point_with_vectrics(ray);
     x = first_point.X;
     y = first_point.Y;
     xstep = ENTITY_SIZE;
-    xstep = xstep * tang(convert_degree_to_radian(ray->direction));
+    ystep = xstep * tan(convert_degree_to_radian(ray->direction));
     while (!point_is_not_a_wall((t_point){x, y}))
     {
         x += xstep;
@@ -71,10 +72,11 @@ t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
     int     ystep;
     t_point first_point;
 
+    first_point = get_first_intersection_point_with_horizons(ray);
     x = first_point.X;
     y = first_point.Y;
     ystep = ENTITY_SIZE;
-    xstep = ystep/tang(convert_degree_to_radian(ray->direction));
+    xstep = ystep/tan(convert_degree_to_radian(ray->direction));
     while (!point_is_not_a_wall((t_point){x, y}))
     {
         x += xstep;
