@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 19:36:41 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/03 19:51:02 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,8 +158,8 @@ void 	draw_rectangle(t_mlx *mlx, t_point point, int COLOR);
 t_img	ft_creat_an_image(t_mlx *mlx);
 
 //point_of_intersection
-int point_is_vertical(const t_point *point);
-int point_is_horizontal(const t_point *point);
+int point_is_vertical  (int	y);
+int point_is_horizontal(int	x);
 
 
 //exit
