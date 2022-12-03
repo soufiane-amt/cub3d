@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.c                                             :+:      :+:    :+:   */
+/*   point_of_intersection.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 21:08:31 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 19:07:44 by samajat          ###   ########.fr       */
+/*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
+/*   Updated: 2022/12/03 19:34:39 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-
-
-
-
-
-double convert_degree_to_radian(double dgreeValue)
+int point_is_vertical(const t_point *point)
 {
-    return (dgreeValue * M_PI/180.0);
+    return (!point->Y  % ENTITY_SIZE);
+}
+
+int point_is_horizontal(const t_point *point)
+{
+    return (!point->X  % ENTITY_SIZE);
 }

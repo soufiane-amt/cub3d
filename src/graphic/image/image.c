@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:54:10 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/01 11:42:43 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/03 19:44:40 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,17 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 }
 
 //temp
+
 void draw_rectangle(t_mlx *mlx, t_point point, int COLOR)
 {
     int i;
     int j;
 
-    i = 0;
+    i = 2;
     while (i < ENTITY_SIZE)
     {
-        j = 0;
+        j = 2;
+
         while (j < ENTITY_SIZE)
         {
             my_mlx_pixel_put(&mlx->img, point.X + i, point.Y + j, COLOR);

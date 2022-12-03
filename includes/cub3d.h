@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/02 20:56:35 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/03 19:36:41 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_point
     int   Y;
 }   t_point;
 
+
 typedef struct s_vector
 {
     t_point         origPoint;
@@ -103,7 +104,6 @@ typedef struct s_player
 {
     t_vector    pos;
     void        *img;
-    
 }   t_player;
 
 
@@ -156,6 +156,10 @@ void    set_player_default_info(t_mlx *mlx, t_player *player);
 //image
 void 	draw_rectangle(t_mlx *mlx, t_point point, int COLOR);
 t_img	ft_creat_an_image(t_mlx *mlx);
+
+//point_of_intersection
+int point_is_vertical(const t_point *point);
+int point_is_horizontal(const t_point *point);
 
 
 //exit

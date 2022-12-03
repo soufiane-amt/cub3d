@@ -6,7 +6,7 @@
 #    By: samajat <samajat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 11:25:40 by samajat           #+#    #+#              #
-#    Updated: 2022/12/01 11:06:49 by samajat          ###   ########.fr        #
+#    Updated: 2022/12/03 19:33:06 by samajat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ GRSRC = $(addprefix graphic/rendering/, rendering)\
 	$(addprefix graphic/events/, movesListener eventsListener  rotationsListener)\
 	$(addprefix graphic/image/, image)\
 		
-MSRC = $(addprefix math/, math)
+MSRC = $(addprefix math/, math point_of_intersection)
 
 SRC = cub3d $(MSRC) $(DEFAULTSRC) $(GRSRC) 
 
