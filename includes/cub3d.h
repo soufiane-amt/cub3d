@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 22:02:33 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/03 22:33:46 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct s_param
 
 
 
+
 //Temp
 int    printPlayerData(t_player *parm);
 
@@ -131,6 +132,8 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 //Math funcs
 double convert_degree_to_radian(double dgreeValue);
+double  get_distance_of_2_point(t_point a, t_point  b);
+
 
 //Moves Listener
 void    moveLeft(t_player  *player);
@@ -160,7 +163,6 @@ t_img	ft_creat_an_image(t_mlx *mlx);
 //point_of_intersection
 int point_is_vertical  (int	y);
 int point_is_horizontal(int	x);
-
 
 //exit
 void	exit_game(t_mlx	*mlx);

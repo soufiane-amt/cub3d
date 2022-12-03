@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 22:22:48 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/03 22:38:16 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,18 @@ t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
     
 }
 
-// int get_ray_distance(const t_vector   *ray)
-// {
-        // return (steps);
-// }
+double get_ray_distance(const t_vector   *ray)
+{
+    t_point HoriPoint;
+    t_point VerticPoint;
+    double  vertical_distance;
+    double  horizontal_distance;
+
+    HoriPoint = get_ray_last_intersection_with_horizons(ray);
+    VerticPoint = get_ray_last_intersection_with_vectrics(ray);
+    horizontal_distance = get_distance_of_2_point(ray->origPoint, HoriPoint);
+    vertical_distance = get_distance_of_2_point(ray->origPoint, VerticPoint);
+    if (horizontal_distance < vertical_distance)
+        return (horizontal_distance);
+    return (vertical_distance);
+}
