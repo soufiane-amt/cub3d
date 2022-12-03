@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 22:33:46 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/03 23:16:04 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 
 
 //MAP
-// #define MAP_RAW 7
-// #define MAP_COL 8
-#define MAP_RAW 33
-#define MAP_COL 14
+#define MAP_RAW 7
+#define MAP_COL 8
+// #define MAP_RAW 33
+// #define MAP_COL 14
 #define ENTITY_SIZE 50
 
 
@@ -121,7 +121,7 @@ typedef struct s_param
 int    printPlayerData(t_player *parm);
 
 //Pixel manipulation funcs
-void    draw_line(t_mlx *mlx,  t_point point1,  t_point point2);
+void draw_line(t_mlx *mlx, const t_point point1, const t_point point2, double steps);
 void    launch_ray(t_mlx *mlx, const t_vector *vector , double angleToRotate);
 void    fire_rays(t_mlx *mlx,  t_vector *vector);
 
@@ -131,7 +131,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 
 //Math funcs
-double convert_degree_to_radian(double dgreeValue);
+double  convert_degree_to_radian(double dgreeValue);
 double  get_distance_of_2_point(t_point a, t_point  b);
 
 
@@ -161,8 +161,9 @@ void 	draw_rectangle(t_mlx *mlx, t_point point, int COLOR);
 t_img	ft_creat_an_image(t_mlx *mlx);
 
 //point_of_intersection
-int point_is_vertical  (int	y);
-int point_is_horizontal(int	x);
+int		point_is_vertical  (int	y);
+int	 	point_is_horizontal(int	x);
+double 	get_ray_distance(t_vector   ray, double angle);
 
 //exit
 void	exit_game(t_mlx	*mlx);
