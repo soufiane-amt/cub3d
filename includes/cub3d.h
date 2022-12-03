@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 19:51:02 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/03 22:02:33 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void    moveLeft(t_player  *player);
 void    moveRight(t_player  *player);
 void    moveFront(t_player  *player);
 void    moveBack(t_player  *player);
-int     move_is_valid (t_point  dstPoint);
+int     point_is_not_a_wall (t_point  dstPoint);
 
 //Rotation Listener
 void    turnRight(t_player  *player);

@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:30:12 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/02 21:31:37 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/03 22:02:33 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
     int i = 0;
     while ( i <= steps)
     {
-        if (!move_is_valid((t_point){X, Y}))
+        if (!point_is_not_a_wall((t_point){X, Y}))
             break;
         my_mlx_pixel_put(&mlx->img, X, Y, RED);
         X += Xinc;

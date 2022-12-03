@@ -6,14 +6,14 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:02:04 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 20:58:56 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/03 22:02:33 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 
-int     move_is_valid (t_point  dstPoint)
+int     point_is_not_a_wall (t_point  dstPoint)
 {
     int x;
     int y;
@@ -33,7 +33,7 @@ void    moveLeft(t_player  *player)
     radianValue = convert_degree_to_radian(player->pos.direction + 90);
     dstPoint.X = player->pos.origPoint.X - (PLAYER_SPEED * cos(radianValue));
     dstPoint.Y = player->pos.origPoint.Y - (PLAYER_SPEED * sin(radianValue));
-    if (move_is_valid(dstPoint))
+    if (point_is_not_a_wall(dstPoint))
     {
         player->pos.origPoint.X -= (PLAYER_SPEED * cos(radianValue));
         player->pos.origPoint.Y -= (PLAYER_SPEED * sin(radianValue));
@@ -48,7 +48,7 @@ void    moveRight(t_player  *player)
     radianValue = convert_degree_to_radian(player->pos.direction + 90);
     dstPoint.X = player->pos.origPoint.X + (PLAYER_SPEED * cos(radianValue));
     dstPoint.Y = player->pos.origPoint.Y + (PLAYER_SPEED * sin(radianValue));
-    if (move_is_valid((dstPoint)))
+    if (point_is_not_a_wall((dstPoint)))
     {
         player->pos.origPoint.X += (PLAYER_SPEED * cos(radianValue));
         player->pos.origPoint.Y += (PLAYER_SPEED * sin(radianValue));
@@ -63,7 +63,7 @@ void    moveBack(t_player  *player)
     radianValue = convert_degree_to_radian(player->pos.direction);
     dstPoint.X = player->pos.origPoint.X - (PLAYER_SPEED * cos(radianValue));
     dstPoint.Y = player->pos.origPoint.Y - (PLAYER_SPEED * sin(radianValue));
-    if (move_is_valid((dstPoint)))
+    if (point_is_not_a_wall((dstPoint)))
     {
         player->pos.origPoint.X -= (PLAYER_SPEED * cos(radianValue));
         player->pos.origPoint.Y -= (PLAYER_SPEED * sin(radianValue));
@@ -78,7 +78,7 @@ void    moveFront(t_player  *player)
     radianValue = convert_degree_to_radian(player->pos.direction);
     dstPoint.X = player->pos.origPoint.X + (PLAYER_SPEED * cos(radianValue));
     dstPoint.Y = player->pos.origPoint.Y + (PLAYER_SPEED * sin(radianValue));
-    if (move_is_valid((dstPoint)))
+    if (point_is_not_a_wall((dstPoint)))
     {
         player->pos.origPoint.X += (PLAYER_SPEED * cos(radianValue));
         player->pos.origPoint.Y += (PLAYER_SPEED * sin(radianValue));
