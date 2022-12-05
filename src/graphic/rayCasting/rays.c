@@ -6,19 +6,19 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:30:12 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 23:16:39 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/05 17:24:00 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 
-void draw_line(t_mlx *mlx, const t_point point1, const t_point point2, double steps)
+void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
 {
     double dx = point2.X - point1.X;
     double dy = point2.Y - point1.Y;
  
-    // double steps = fabs(dx) > fabs(dy) ? fabs(dx) : fabs(dy);
+    double steps = fabs(dx) > fabs(dy) ? fabs(dx) : fabs(dy);
     printf("===}}}}%f\n", steps);
     double Xinc = dx / (double)steps;
     double Yinc = dy / (double)steps;
@@ -39,8 +39,7 @@ void launch_ray(t_mlx *mlx, const t_vector *vector , double angleToRotate)
 {
     angleToRotate = convert_degree_to_radian(vector->direction + angleToRotate);
     
-    draw_line(mlx, vector->origPoint, (t_point){vector->origPoint.X + cos(angleToRotate) * vector->magnitude,\
-        vector->origPoint.Y + sin(angleToRotate) * vector->magnitude}, get_ray_distance(*vector, angleToRotate));
+    draw_line(mlx, vector->origPoint, get_ray_distance(*vector, angleToRotate));
 }
 
 

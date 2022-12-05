@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:02:04 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 23:22:01 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/05 19:50:56 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int     point_is_not_a_wall (t_point  dstPoint)
 
     x = dstPoint.X/ENTITY_SIZE;
     y = dstPoint.Y/ENTITY_SIZE;
-    if (map[y][x] != '1')
+    if (y <= MAP_COL && x <= MAP_RAW && map[y][x] != '1')
         return (1);
     return 0;
 }
