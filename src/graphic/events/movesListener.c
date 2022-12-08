@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:02:04 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 23:22:01 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/08 16:31:29 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int     point_is_not_a_wall (t_point  dstPoint)
 
     x = dstPoint.X/ENTITY_SIZE;
     y = dstPoint.Y/ENTITY_SIZE;
-    if (map[y][x] != '1')
-        return (1);
-    return 0;
+    if (x < 0 || y < 0 || map[y][x] == '1')
+        return (0);
+    return (1);
 }
 
 void    moveLeft(t_player  *player)
@@ -31,12 +31,12 @@ void    moveLeft(t_player  *player)
     float   radianValue;
 
     radianValue = convert_degree_to_radian(player->pos.direction + 90);
-    dstPoint.X = player->pos.origPoint.X - (PLAYER_SPEED * cos(radianValue));
-    dstPoint.Y = player->pos.origPoint.Y - (PLAYER_SPEED * sin(radianValue));
+    dstPoint.X = roundf(player->pos.origPoint.X - (PLAYER_SPEED * cos(radianValue)));
+    dstPoint.Y = roundf(player->pos.origPoint.Y - (PLAYER_SPEED * sin(radianValue)));
     if (point_is_not_a_wall(dstPoint))
     {
-        player->pos.origPoint.X -= (PLAYER_SPEED * cos(radianValue));
-        player->pos.origPoint.Y -= (PLAYER_SPEED * sin(radianValue));
+        player->pos.origPoint.X -= roundf((PLAYER_SPEED * cos(radianValue)));
+        player->pos.origPoint.Y -= roundf((PLAYER_SPEED * sin(radianValue)));
     }
 }
 
@@ -46,12 +46,12 @@ void    moveRight(t_player  *player)
     float   radianValue;
 
     radianValue = convert_degree_to_radian(player->pos.direction + 90);
-    dstPoint.X = player->pos.origPoint.X + (PLAYER_SPEED * cos(radianValue));
-    dstPoint.Y = player->pos.origPoint.Y + (PLAYER_SPEED * sin(radianValue));
+    dstPoint.X = roundf(player->pos.origPoint.X + (PLAYER_SPEED * cos(radianValue)));
+    dstPoint.Y = roundf(player->pos.origPoint.Y + (PLAYER_SPEED * sin(radianValue)));
     if (point_is_not_a_wall((dstPoint)))
     {
-        player->pos.origPoint.X += (PLAYER_SPEED * cos(radianValue));
-        player->pos.origPoint.Y += (PLAYER_SPEED * sin(radianValue));
+        player->pos.origPoint.X += roundf((PLAYER_SPEED * cos(radianValue)));
+        player->pos.origPoint.Y += roundf((PLAYER_SPEED * sin(radianValue)));
     }
 }
 
@@ -61,12 +61,12 @@ void    moveBack(t_player  *player)
     float   radianValue;
 
     radianValue = convert_degree_to_radian(player->pos.direction);
-    dstPoint.X = player->pos.origPoint.X - (PLAYER_SPEED * cos(radianValue));
-    dstPoint.Y = player->pos.origPoint.Y - (PLAYER_SPEED * sin(radianValue));
+    dstPoint.X = roundf(player->pos.origPoint.X - (PLAYER_SPEED * cos(radianValue)));
+    dstPoint.Y = roundf(player->pos.origPoint.Y - (PLAYER_SPEED * sin(radianValue)));
     if (point_is_not_a_wall((dstPoint)))
     {
-        player->pos.origPoint.X -= (PLAYER_SPEED * cos(radianValue));
-        player->pos.origPoint.Y -= (PLAYER_SPEED * sin(radianValue));
+        player->pos.origPoint.X -=roundf( (PLAYER_SPEED * cos(radianValue)));
+        player->pos.origPoint.Y -=roundf( (PLAYER_SPEED * sin(radianValue)));
     }
 }
 
@@ -76,11 +76,11 @@ void    moveFront(t_player  *player)
     float   radianValue;
 
     radianValue = convert_degree_to_radian(player->pos.direction);
-    dstPoint.X = player->pos.origPoint.X + (PLAYER_SPEED * cos(radianValue));
-    dstPoint.Y = player->pos.origPoint.Y + (PLAYER_SPEED * sin(radianValue));
+    dstPoint.X = roundf(player->pos.origPoint.X + (PLAYER_SPEED * cos(radianValue)));
+    dstPoint.Y = roundf(player->pos.origPoint.Y + (PLAYER_SPEED * sin(radianValue)));
     if (point_is_not_a_wall((dstPoint)))
     {
-        player->pos.origPoint.X += (PLAYER_SPEED * cos(radianValue));
-        player->pos.origPoint.Y += (PLAYER_SPEED * sin(radianValue));
+        player->pos.origPoint.X += roundf((PLAYER_SPEED * cos(radianValue)));
+        player->pos.origPoint.Y += roundf((PLAYER_SPEED * sin(radianValue)));
     }
 }

@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:54:10 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/03 20:54:02 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/08 14:25:29 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	char    *pixel;
 
-    pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*( int *)pixel = color;
+    if ((x >= 0 && x <= WINDOW_SIZEX)  && (y >= 0 && y <= WINDOW_SIZEY))
+    {
+        pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	    *( int *)pixel = color;
+    }
 }
 
 //temp
