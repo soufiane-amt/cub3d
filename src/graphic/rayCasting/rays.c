@@ -6,11 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:30:12 by samajat           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/12/08 14:23:53 by samajat          ###   ########.fr       */
-=======
-/*   Updated: 2022/12/05 17:24:00 by samajat          ###   ########.fr       */
->>>>>>> 8c484749fc23c2d5abc8c25af6fa879f911b9712
+/*   Updated: 2022/12/08 17:36:46 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +19,6 @@ void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
     double dy = point2.Y - point1.Y;
  
     double steps = fabs(dx) > fabs(dy) ? fabs(dx) : fabs(dy);
-<<<<<<< HEAD
-=======
-    printf("===}}}}%f\n", steps);
->>>>>>> 8c484749fc23c2d5abc8c25af6fa879f911b9712
     double Xinc = dx / (double)steps;
     double Yinc = dy / (double)steps;
  

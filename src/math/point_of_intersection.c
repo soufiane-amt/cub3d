@@ -6,11 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/12/08 17:32:03 by samajat          ###   ########.fr       */
-=======
-/*   Updated: 2022/12/05 20:00:43 by samajat          ###   ########.fr       */
->>>>>>> 8c484749fc23c2d5abc8c25af6fa879f911b9712
+/*   Updated: 2022/12/08 17:36:36 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,23 +144,23 @@ int point_is_horizontal(int x)
 //     return ((t_point){x, y});
 // }
 
-// t_point get_first_intersection_point_with_horizons(const   t_vector    *ray)
-// {
-//     int x;
-//     int y;
+t_point get_first_intersection_point_with_horizons(const   t_vector    *ray)
+{
+    int x;
+    int y;
 
     y = floor(ray->origPoint.Y / ENTITY_SIZE) * ENTITY_SIZE;
     x = (ray->origPoint.Y - y)/ tan((ray->direction)) + ray->origPoint.X;
     return ((t_point){x, y});
 }
 
-// t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
-// {
-//     int     x;
-//     int     y;
-//     int     xstep;
-//     int     ystep;
-//     t_point first_point;
+t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
+{
+    int     x;
+    int     y;
+    int     xstep;
+    int     ystep;
+    t_point first_point;
 
     first_point = get_first_intersection_point_with_horizons(ray);
     printf("horizon first intersection is : (x=%d, y=%d)\n", first_point.X, first_point.Y);
