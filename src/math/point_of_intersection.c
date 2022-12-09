@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/08 17:36:36 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/09 14:16:19 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ t_point get_first_intersection_point_with_horizons(const   t_vector    *ray)
     int y;
 
     y = floor(ray->origPoint.Y / ENTITY_SIZE) * ENTITY_SIZE;
-    x = (ray->origPoint.Y - y)/ tan((ray->direction)) + ray->origPoint.X;
+    x = ray->origPoint.X + (ray->origPoint.Y - y)/ tan((ray->direction))  ;
     return ((t_point){x, y});
 }
 
@@ -168,7 +168,7 @@ t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
     x = first_point.X;
     y = first_point.Y;
     ystep = ENTITY_SIZE;
-    xstep = ystep/tan((ray->direction));
+    xstep = ystep/tan(( ray->direction));
     while (point_is_not_a_wall((t_point){x, y}))
     {
         x += xstep;
@@ -185,7 +185,7 @@ t_point get_ray_distance(t_vector   ray, double angle)
     // double  horizontal_distance;
 
     (void)angle;
-    ray.direction = 3*M_PI_2;
+    ray.direction = -3*M_PI_2;
     HoriPoint = get_first_intersection_point_with_horizons(&ray);
     // HoriPoint = get_ray_last_intersection_with_horizons(&ray);
     // VerticPoint = get_first_intersection_point_with_vectrics(&ray);
