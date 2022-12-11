@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/08 17:58:19 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:05:12 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ extern char map[MAP_COL][MAP_RAW];
 #define AVATAR_IMG "./src/img/redCircle.xpm"
 
 //Player speed
-#define PLAYER_SPEED 8
+#define PLAYER_SPEED 7
 //Keys
 enum KEYS {
 	MOVE_LEFT_KEY = 0,

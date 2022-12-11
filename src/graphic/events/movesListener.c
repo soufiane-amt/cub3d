@@ -6,12 +6,17 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:02:04 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/08 17:34:43 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:45:37 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+
+int within_wall(int x, int y)
+{
+    return ((x >= 0 && x <= WINDOW_SIZEX ) && (y >= 0 && y <= WINDOW_SIZEY));
+}
 
 int     point_is_not_a_wall (t_point  dstPoint)
 {
@@ -20,8 +25,9 @@ int     point_is_not_a_wall (t_point  dstPoint)
 
     x = dstPoint.X/ENTITY_SIZE;
     y = dstPoint.Y/ENTITY_SIZE;
-    if (x < 0 || y < 0 || map[y][x] == '1')
+    if (!(within_wall(x, y)) || map[y][x] == '1')
         return (0);
+    printf("<----------->\n");
     return (1);
 }
 
