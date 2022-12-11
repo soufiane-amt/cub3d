@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/11 19:45:10 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/11 19:48:55 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,24 +207,24 @@ t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
 t_point get_ray_distance(t_vector   ray, double angle)
 {
     t_point HoriPoint;
-    // t_point VerticPoint;
-    // double  vertical_distance;
-    // double  horizontal_distance;
+    t_point VerticPoint;
+    double  vertical_distance;
+    double  horizontal_distance;
 
     (void)angle;
-    ray.direction = 90;
-    // HoriPoint = get_first_intersection_point_with_horizons(&ray);
+    ray.direction = -90;
+    HoriPoint = get_first_intersection_point_with_horizons(&ray);
     HoriPoint = get_ray_last_intersection_with_horizons(&ray);
     // VerticPoint = get_first_intersection_point_with_vectrics(&ray);
-    // VerticPoint = get_ray_last_intersection_with_vectrics(&ray);
+    VerticPoint = get_ray_last_intersection_with_vectrics(&ray);
     printf("Horizonatal x: %d, y:%d, Direction:%f\n", HoriPoint.X, HoriPoint.Y, ray.direction);
-    // printf("Vertical x: %d, y:%d\n", VerticPoint.X, VerticPoint.Y);
-    // horizontal_distance = get_distance_of_2_point(ray.origPoint, HoriPoint);
-    // vertical_distance = get_distance_of_2_point(ray.origPoint, VerticPoint);
-    // if (horizontal_distance < vertical_distance)
-    //     return (horizontal_distance);
+    printf("Vertical x: %d, y:%d\n", VerticPoint.X, VerticPoint.Y);
+    horizontal_distance = get_distance_of_2_point(ray.origPoint, HoriPoint);
+    vertical_distance = get_distance_of_2_point(ray.origPoint, VerticPoint);
+    if (horizontal_distance < vertical_distance)
+        return (HoriPoint);
     // HoriPoint.X = 100;
     // HoriPoint.Y = 100;
-    // return (VerticPoint);
-    return (HoriPoint);
+    return (VerticPoint);
+    // return (HoriPoint);
 }
