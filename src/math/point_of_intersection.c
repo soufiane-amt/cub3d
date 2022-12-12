@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/11 19:50:19 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:20:19 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void    func( int *y, double *a, double *b, double angle)
 }
 void    func1(int *x, double *a, double *b, double angle)
 {
-    if (!(angle <= 90  && angle >= -90))
+    if (angle >= 90  && angle >= -90)
     {
         *a *= -1;
         *b *= -1;
@@ -212,7 +212,7 @@ t_point get_ray_distance(t_vector   ray, double angle)
     double  horizontal_distance;
 
     (void)angle;
-    ray.direction = -30;
+    // ray.direction = -30;
     HoriPoint = get_first_intersection_point_with_horizons(&ray);
     HoriPoint = get_ray_last_intersection_with_horizons(&ray);
     // VerticPoint = get_first_intersection_point_with_vectrics(&ray);
