@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/12 16:20:19 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/15 18:29:36 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int point_is_horizontal(int x)
 
 void    func( int *y, double *a, double *b, double angle)
 {
-    if (angle <= 0  && angle >= -180)
+    if (angle >= 180  && angle <= 360)
     {
         *a *= -1;
         *b *= -1;
@@ -126,7 +126,8 @@ void    func( int *y, double *a, double *b, double angle)
 }
 void    func1(int *x, double *a, double *b, double angle)
 {
-    if (angle >= 90  && angle >= -90)
+    // if (angle <= 270 &&÷ angle)
+    if ((angle >= 90  && angle >= 0) || (angle >= 270  && angle <= 360))
     {
         *a *= -1;
         *b *= -1;
@@ -142,7 +143,7 @@ t_point get_first_intersection_point_with_vectrics(const   t_vector    *ray)
     int y;
 
     x = floor(ray->origPoint.X / ENTITY_SIZE) * ENTITY_SIZE;
-    y = -(tan(convert_degree_to_radian(ray->direction)) * (x - ray->origPoint.X) - ray->origPoint.Y);
+    y = roundf (-(tan(convert_degree_to_radian(ray->direction)) * (x - ray->origPoint.X) - ray->origPoint.Y));
     return ((t_point){x, y});
 }
 
@@ -160,7 +161,7 @@ t_point get_ray_last_intersection_with_vectrics(const   t_vector    *ray)
     x = first_point.X ;
     y = first_point.Y;
     xstep = ENTITY_SIZE;
-    ystep = xstep * tan((convert_degree_to_radian(ray->direction)));
+    ystep = roundf (xstep * tan((convert_degree_to_radian(ray->direction))));
     func1(&x, &xstep, &ystep, ray->direction);
     while (point_is_not_a_wall((t_point){x, y}))
     {
@@ -176,7 +177,7 @@ t_point get_first_intersection_point_with_horizons(const   t_vector    *ray)
     int y;
 
     y = floor(ray->origPoint.Y / ENTITY_SIZE) * ENTITY_SIZE;
-    x = ray->origPoint.X + (ray->origPoint.Y - y)/ tan(convert_degree_to_radian(ray->direction)) ;
+    x = roundf (ray->origPoint.X + (ray->origPoint.Y - y)/ tan(convert_degree_to_radian(ray->direction))) ;
     return ((t_point){x, y});
 }
 
@@ -213,7 +214,6 @@ t_point get_ray_distance(t_vector   ray, double angle)
 
     (void)angle;
     // ray.direction = -30;
-    HoriPoint = get_first_intersection_point_with_horizons(&ray);
     HoriPoint = get_ray_last_intersection_with_horizons(&ray);
     // VerticPoint = get_first_intersection_point_with_vectrics(&ray);
     VerticPoint = get_ray_last_intersection_with_vectrics(&ray);
@@ -221,6 +221,7 @@ t_point get_ray_distance(t_vector   ray, double angle)
     printf("Vertical x: %d, y:%d\n", VerticPoint.X, VerticPoint.Y);
     horizontal_distance = get_distance_of_2_point(ray.origPoint, HoriPoint);
     vertical_distance = get_distance_of_2_point(ray.origPoint, VerticPoint);
+    printf("****%f\n****%f\n", horizontal_distance, vertical_distance);
     if (horizontal_distance < vertical_distance)
         return (HoriPoint);
     // HoriPoint.X = 100;

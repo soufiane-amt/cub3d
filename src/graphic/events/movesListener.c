@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:02:04 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/11 15:45:37 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/14 14:39:03 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int     point_is_not_a_wall (t_point  dstPoint)
     y = dstPoint.Y/ENTITY_SIZE;
     if (!(within_wall(x, y)) || map[y][x] == '1')
         return (0);
-    printf("<----------->\n");
     return (1);
 }
 
