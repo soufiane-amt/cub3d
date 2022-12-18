@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/18 21:13:04 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/18 21:24:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,40 +35,41 @@ void    func1(int *x, double *a, double *b, double angle)
 }
 
 //---------
-// t_point get_first_intersection_point_with_vectrics(const   t_vector    *ray)
-// {
-//     int x;
-//     int y;
-// // 
-//     x = floor(ray->origPoint.X / ENTITY_SIZE) * ENTITY_SIZE;
-//     y = roundf (-(tan(convert_degree_to_radian(ray->direction)) * (x - ray->origPoint.X) - ray->origPoint.Y));
-//     return ((t_point){x, y});
-// }
-// // 
-// // 
-// t_point get_ray_last_intersection_with_vectrics(const   t_vector    *ray)
-// {
-//     int     x;
-//     int     y;
-//     double     xstep;
-//     double     ystep;
-//     t_point first_point;
+t_point get_first_intersection_point_with_vectrics(const   t_vector    *ray)
+{
+    int x;
+    int y;
+    int adjuster;
 
-//     first_point = get_first_intersection_point_with_vectrics(ray);
-//     printf("vertical first intersection is : (x=%d, y=%d)\n", first_point.X, first_point.Y);
-//     x = first_point.X ;
-//     y = first_point.Y;
-//     xstep = ENTITY_SIZE;
-//     ystep = (xstep * tan((convert_degree_to_radian(ray->direction))));
-//     func1(&x, &xstep, &ystep, ray->direction);
-//     while (point_is_not_a_wall((t_point){x, y}))
-//     {
-//         x += xstep;
-//         y += ystep;
-//     }
-//     return ((t_point){x, y});
-// }
-// 
+    adjuster =  (ray->direction < 270  && ray->direction >  90) ? -1 : 64;
+    x = floor(ray->origPoint.X / ENTITY_SIZE) * ENTITY_SIZE + adjuster;
+    y = -(tan(convert_degree_to_radian(ray->direction)) * (x - ray->origPoint.X) - ray->origPoint.Y);
+    return ((t_point){x, y});
+}
+
+t_point get_ray_last_intersection_with_vectrics(const   t_vector    *ray)
+{
+    int     x;
+    int     y;
+    double     xstep;
+    double     ystep;
+    t_point first_point;
+
+    first_point = get_first_intersection_point_with_vectrics(ray);
+    printf("vertical first intersection is : (x=%d, y=%d)\n", first_point.X, first_point.Y);
+    x = first_point.X ;
+    y = first_point.Y;
+    xstep = ENTITY_SIZE;
+    ystep = (xstep * tan((convert_degree_to_radian(ray->direction))));
+    func1(&x, &xstep, &ystep, ray->direction);
+    while (point_is_not_a_wall((t_point){x, y}))
+    {
+        x += xstep;
+        y += ystep;
+    }
+    return ((t_point){x, y});
+}
+
 t_point get_first_intersection_point_with_horizons(const   t_vector    *ray)
 {
     int x;
@@ -89,7 +90,6 @@ t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
     double     ystep;
     t_point first_point;
 
-    // ray->direction = 270 - ()
     first_point = get_first_intersection_point_with_horizons(ray);
     printf("float -->%f\n", ray->direction);
     printf("horizon first intersection is : (x=%d, y=%d)\n", first_point.X, first_point.Y - 1);
@@ -105,9 +105,7 @@ t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
     {
         x += (xstep);
         y += (ystep);
-        printf("---\n");
     }
-    // if ()
     return ((t_point){x, y});
 }
 
