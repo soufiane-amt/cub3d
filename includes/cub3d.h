@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/14 16:03:44 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/17 15:52:26 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 #define MAP_COL 8
 // #define MAP_RAW 33
 // #define MAP_COL 14
-#define ENTITY_SIZE 50
+#define ENTITY_SIZE 64
 
 
 //Window
@@ -163,7 +163,7 @@ t_img	ft_creat_an_image(t_mlx *mlx);
 //point_of_intersection
 int		point_is_vertical  (int	y);
 int	 	point_is_horizontal(int	x);
-t_point 	get_ray_distance(t_vector   ray, double angle);
+double 	get_ray_distance(t_vector   ray, double angle);
 
 //exit
 void	exit_game(t_mlx	*mlx);

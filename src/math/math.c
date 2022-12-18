@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 21:08:31 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/15 18:17:47 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/17 18:32:43 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 double  get_distance_of_2_point(t_point a, t_point  b)
 {
-    return (sqrt( pow((b.X - a.X), 2)  +    pow((b.Y - a.Y), 2)));
+    
+    return (sqrt( pow((b.X - a.X), 2)  +   pow((b.Y - a.Y), 2)));
     // double dx = b.X - a.X;
     // double dy = b.Y - a.Y;
  

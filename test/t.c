@@ -1,15 +1,12 @@
 #include <stdio.h>
+#include <math.h>
 
 
-
-#define x func()
-
-void	func()
+double convert_degree_to_radian(double dgreeValue)
 {
-	printf("--->\n");
+    return (dgreeValue * (M_PI/180.0));
 }
-
 int	main(void)
 {
-	x;
+	printf("--->resultValue: %f, reel value: \n", tan(convert_degree_to_radian(300)));
 }

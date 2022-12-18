@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:30:12 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/14 16:11:55 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/18 14:58:44 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
 void launch_ray(t_mlx *mlx, const t_vector *vector , double angleToRotate)
 {
     angleToRotate = convert_degree_to_radian(vector->direction + angleToRotate);
-    
-    draw_line(mlx, vector->origPoint, get_ray_distance(*vector, angleToRotate));
+    double steps = get_ray_distance(*vector, angleToRotate);
+    draw_line(mlx, vector->origPoint, (t_point){roundf(vector->origPoint.X + cos((angleToRotate)) * steps), 
+    roundf(vector->origPoint.Y + sin((angleToRotate)) * steps)});
 }
 
 
