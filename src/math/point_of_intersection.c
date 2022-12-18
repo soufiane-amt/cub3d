@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/18 14:51:51 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/18 19:42:14 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,13 +171,18 @@ void    func1(int *x, double *a, double *b, double angle)
 //     return ((t_point){x, y});
 // }
 
+// int non_sense(double angle)
+// {
+//     return (angle)
+// }
+
 t_point get_first_intersection_point_with_horizons(const   t_vector    *ray)
 {
     int x;
     int y;
 
-    y = (floor(ray->origPoint.Y / ENTITY_SIZE) * ENTITY_SIZE) - 1 ;
-    x = ray->origPoint.X + (ray->origPoint.Y - y)/ tan(convert_degree_to_radian(ray->direction));
+    y = floor(ray->origPoint.Y / ENTITY_SIZE) * (ENTITY_SIZE) - 1 ;
+    x = (ray->origPoint.X + (y - ray->origPoint.Y)/ tan(convert_degree_to_radian(ray->direction)));
     return ((t_point){x, y});
 }
 
@@ -185,10 +190,11 @@ t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
 {
     int     x;
     int     y;
-    int     xstep;
-    int     ystep;
+    double     xstep;
+    double     ystep;
     t_point first_point;
 
+    // ray->direction = 270 - ()
     first_point = get_first_intersection_point_with_horizons(ray);
     printf("float -->%f\n", ray->direction);
     printf("horizon first intersection is : (x=%d, y=%d)\n", first_point.X, first_point.Y - 1);
@@ -197,7 +203,16 @@ t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
     ystep = -ENTITY_SIZE;
     xstep = (ENTITY_SIZE/tan(convert_degree_to_radian(ray->direction)));
     printf("LOL %f\n", tan(convert_degree_to_radian(ray->direction)));
+    xstep *=  (ray->direction < 270  && ray->direction >  90  && xstep > 0) ? -1 : 1;
+    xstep *=  ((ray->direction > 270  || ray->direction <  90)  && xstep < 0) ? -1 : 1;
     // func(&y, &xstep, &ystep, ray->direction);
+    //if ((data->ray.left_ray && xstep > 0) || (data->ray.right_ray && xstep < 0))
+
+    // if ((ray->direction < 270  && ray->direction >  90  && xstep > 0))
+    //     xstep *= -1;
+    // if ((ray->direction < 270  && ray->direction >  90 ) )
+    // if ((ray->direction > 270  && ray->direction <  90    && xstep < 0))
+        // xstep *= -1;
     while (point_is_not_a_wall((t_point){x, y}))
     {
         printf("-----\n");
