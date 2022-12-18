@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:30:12 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/18 22:45:16 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/18 22:55:12 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
         i++;
     }
 }
+
 
 void launch_ray(t_mlx *mlx,  t_vector vector , double angleToRotate)
 {
