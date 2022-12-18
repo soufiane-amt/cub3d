@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:30:12 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/18 16:52:37 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/18 22:45:16 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,16 @@ void draw_line(t_mlx *mlx, const t_point point1, const t_point point2)
     }
 }
 
-void launch_ray(t_mlx *mlx, const t_vector *vector , double angleToRotate)
+void launch_ray(t_mlx *mlx,  t_vector vector , double angleToRotate)
 {
-    angleToRotate = convert_degree_to_radian(vector->direction + angleToRotate);
-    double steps = get_ray_distance(*vector, angleToRotate);
-    draw_line(mlx, vector->origPoint, (t_point){(vector->origPoint.X + (cos((angleToRotate)) * steps)), 
-    (vector->origPoint.Y + (sin((angleToRotate)) * steps))});
+    double angleRadian;
+    double steps;
+
+    vector.direction += angleToRotate;
+    angleRadian = convert_degree_to_radian(vector.direction);
+    steps = get_ray_distance(vector);
+    draw_line(mlx, vector.origPoint, (t_point){(vector.origPoint.X + (cos((angleRadian)) * steps)), 
+    (vector.origPoint.Y + (sin((angleRadian)) * steps))});
 }
 
 
@@ -48,9 +52,9 @@ void    fire_rays(t_mlx *mlx,  t_vector *vector)
     float i;
 
     i = -FOV/2;
-    while (i <= FOV/2)
-    {
-        launch_ray(mlx, vector, i);
+    // while (i <= FOV/2)
+    // {
+        launch_ray(mlx, *vector, i);
         i += 0.01f;
-    }
+    // }
 }

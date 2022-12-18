@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/17 15:52:26 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/18 22:43:44 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int    printPlayerData(t_player *parm);
 
 //Pixel manipulation funcs
 void draw_line(t_mlx *mlx, const t_point point1, const t_point point2);
-void    launch_ray(t_mlx *mlx, const t_vector *vector , double angleToRotate);
+void    launch_ray(t_mlx *mlx, t_vector vector , double angleToRotate);
 void    fire_rays(t_mlx *mlx,  t_vector *vector);
 
 //Rendering functions
@@ -163,7 +163,7 @@ t_img	ft_creat_an_image(t_mlx *mlx);
 //point_of_intersection
 int		point_is_vertical  (int	y);
 int	 	point_is_horizontal(int	x);
-double 	get_ray_distance(t_vector   ray, double angle);
+double 	get_ray_distance(t_vector   ray);
 
 //exit
 void	exit_game(t_mlx	*mlx);

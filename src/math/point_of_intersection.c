@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/18 22:20:35 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/18 22:45:06 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,14 @@ t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
     return ((t_point){x, y});
 }
 
-double get_ray_distance(t_vector   ray, double angle)
+double get_ray_distance(t_vector   ray)
 {
     t_point HoriPoint;
     t_point VerticPoint;
     double  vertical_distance;
     double  horizontal_distance;
 
-    (void)angle;
+    printf("-------->%f\n", ray.direction);
     HoriPoint = get_ray_last_intersection_with_horizons(&ray);
     VerticPoint = get_ray_last_intersection_with_vectrics(&ray);
     // VerticPoint = get_first_intersection_point_with_vectrics(&ray);
