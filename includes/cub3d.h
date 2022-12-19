@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:23:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/17 15:52:26 by samajat          ###   ########.fr       */
+/*   Updated: 2022/12/19 19:03:30 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 //Math funcs
 double  convert_degree_to_radian(double dgreeValue);
 double  get_distance_of_2_point(t_point a, t_point  b);
+double	angleNormalizer(double angle);
 
 
 //Moves Listener
