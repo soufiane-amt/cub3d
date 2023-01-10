@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotationsListener.c                                :+:      :+:    :+:   */
+/*   ray_settings.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 19:06:47 by samajat           #+#    #+#             */
-/*   Updated: 2023/01/03 17:01:35 by samajat          ###   ########.fr       */
+/*   Created: 2022/12/21 18:42:06 by samajat           #+#    #+#             */
+/*   Updated: 2023/01/03 17:19:34 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	rotate_player(t_player *player, int dir, double angleToRotate)
+void	set_ray_to_default(t_ray *ray)
 {
-	player->pos.direction = angle_normalizer(player->pos.direction + (dir
-				* angleToRotate));
+	ray->is_right = false;
+	ray->is_up = false;
+	ray->intersect_is_vertical = false;
 }
 
-void	turn_right(t_player *player)
+void	set_ray_direction(t_ray *ray)
 {
-	rotate_player(player, TO_RIGHT, PLAYER_SPEED / 2);
+	set_ray_to_default(ray);
+	if (ray->ray.direction < 360 && ray->ray.direction > 180)
+		ray->is_up = true;
+	if (ray->ray.direction > 270 || ray->ray.direction < 90)
+		ray->is_right = true;
 }
 
-void	turn_left(t_player *player)
+void	set_ray_intercetions(t_ray *ray, t_point coords)
 {
-	rotate_player(player, TO_LEFT, PLAYER_SPEED / 2);
+	ray->ray.orig_point = coords;
 }

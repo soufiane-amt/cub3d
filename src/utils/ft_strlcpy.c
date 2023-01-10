@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotationsListener.c                                :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 19:06:47 by samajat           #+#    #+#             */
-/*   Updated: 2023/01/03 17:01:35 by samajat          ###   ########.fr       */
+/*   Created: 2021/11/13 13:21:20 by akadi             #+#    #+#             */
+/*   Updated: 2022/12/28 22:48:35 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	rotate_player(t_player *player, int dir, double angleToRotate)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	player->pos.direction = angle_normalizer(player->pos.direction + (dir
-				* angleToRotate));
-}
+	char	*src1;
+	size_t	i;
 
-void	turn_right(t_player *player)
-{
-	rotate_player(player, TO_RIGHT, PLAYER_SPEED / 2);
-}
-
-void	turn_left(t_player *player)
-{
-	rotate_player(player, TO_LEFT, PLAYER_SPEED / 2);
+	src1 = (char *)src;
+	i = 0;
+	if (dstsize == 0)
+		return (ft_strlen(src1));
+	while ((src1[i] != '\0') && (i < dstsize - 1))
+	{
+		dst[i] = src1[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src1));
 }

@@ -6,89 +6,48 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:02:04 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/18 14:38:55 by samajat          ###   ########.fr       */
+/*   Updated: 2023/01/06 15:19:52 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-int within_wall(int x, int y)
+int	within_wall(int x, int y, const t_parsing *parsing)
 {
-    return ((x >= 0 && x <= WINDOW_SIZEX ) && (y >= 0 && y <= WINDOW_SIZEY));
+	(void)parsing;
+	return ((x >= 0 && x < parsing->max_line) && (y >= 0
+			&& y < parsing->num_lines));
 }
 
-int     point_is_not_a_wall (t_point  dstPoint)
+int	point_is_not_a_wall(t_point dst_point, const t_parsing *parsing)
 {
-    int x;
-    int y;
+	int	x;
+	int	y;
 
-    x = (dstPoint.X/ENTITY_SIZE);
-    y = (dstPoint.Y/ENTITY_SIZE);
-    if (!(within_wall(x, y)) || (map[y][x] == '1'))
-    {
-        printf("Blassa fin w9f : x = %d, y = %d\n", x, y);
-        return (0);
-    }
-    return (1);
+	x = (dst_point.x / TILE_SIZE);
+	y = (dst_point.y / TILE_SIZE);
+	if (!within_wall(x, y, parsing))
+		return (0);
+	if (parsing->map[y][x] == '1')
+		return (0);
+	return (1);
 }
 
-void    moveLeft(t_player  *player)
+int	mouse_move(int x, int y, t_param *param)
 {
-    t_point dstPoint;
-    float   radianValue;
+	static int	last = -1;
 
-    radianValue = convert_degree_to_radian(player->pos.direction + 90);
-    dstPoint.X = roundf(player->pos.origPoint.X - (PLAYER_SPEED * cos(radianValue)));
-    dstPoint.Y = roundf(player->pos.origPoint.Y - (PLAYER_SPEED * sin(radianValue)));
-    if (point_is_not_a_wall(dstPoint))
-    {
-        player->pos.origPoint.X -= roundf((PLAYER_SPEED * cos(radianValue)));
-        player->pos.origPoint.Y -= roundf((PLAYER_SPEED * sin(radianValue)));
-    }
-}
-
-void    moveRight(t_player  *player)
-{
-    t_point dstPoint;
-    float   radianValue;
-
-    radianValue = convert_degree_to_radian(player->pos.direction + 90);
-    dstPoint.X = roundf(player->pos.origPoint.X + (PLAYER_SPEED * cos(radianValue)));
-    dstPoint.Y = roundf(player->pos.origPoint.Y + (PLAYER_SPEED * sin(radianValue)));
-    if (point_is_not_a_wall((dstPoint)))
-    {
-        player->pos.origPoint.X += roundf((PLAYER_SPEED * cos(radianValue)));
-        player->pos.origPoint.Y += roundf((PLAYER_SPEED * sin(radianValue)));
-    }
-}
-
-void    moveBack(t_player  *player)
-{
-    t_point dstPoint;
-    float   radianValue;
-
-    radianValue = convert_degree_to_radian(player->pos.direction);
-    dstPoint.X = roundf(player->pos.origPoint.X - (PLAYER_SPEED * cos(radianValue)));
-    dstPoint.Y = roundf(player->pos.origPoint.Y - (PLAYER_SPEED * sin(radianValue)));
-    if (point_is_not_a_wall((dstPoint)))
-    {
-        player->pos.origPoint.X -=roundf( (PLAYER_SPEED * cos(radianValue)));
-        player->pos.origPoint.Y -=roundf( (PLAYER_SPEED * sin(radianValue)));
-    }
-}
-
-void    moveFront(t_player  *player)
-{
-    t_point dstPoint;
-    float   radianValue;
-
-    radianValue = convert_degree_to_radian(player->pos.direction);
-    dstPoint.X = roundf(player->pos.origPoint.X + (PLAYER_SPEED * cos(radianValue)));
-    dstPoint.Y = roundf(player->pos.origPoint.Y + (PLAYER_SPEED * sin(radianValue)));
-    if (point_is_not_a_wall((dstPoint)))
-    {
-        player->pos.origPoint.X += roundf((PLAYER_SPEED * cos(radianValue)));
-        player->pos.origPoint.Y += roundf((PLAYER_SPEED * sin(radianValue)));
-    }
+	if (y > WINDOW_HEIGHT || y < 0 || x > WINDOW_WIDTH || x < 0)
+		return (0);
+	if (x < last)
+	{
+		rotate_player(param->player, TO_LEFT, 3);
+		last = x;
+	}
+	else if (x > last)
+	{
+		rotate_player(param->player, TO_RIGHT, 3);
+		last = x;
+	}
+	return (0);
 }

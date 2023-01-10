@@ -6,136 +6,118 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:08:20 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/18 22:45:06 by samajat          ###   ########.fr       */
+/*   Updated: 2023/01/05 18:57:57 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-void    func( int *y, double *a, double *b, double angle)
+t_point	get_first_intersection_point_with_vectrics(t_ray *ray)
 {
-    if (angle > 180  && angle < 360)
-    {
-        *a *= -1;
-        *b *= -1;
-        // (void)y;
-        (*y)--;
-    }
+	double	x_steps;
+	double	y_steps;
+	int		adjuster;
+
+	adjuster = 0;
+	if (ray->is_right)
+		adjuster = TILE_SIZE;
+	x_steps = floor(ray->ray.orig_point.x / TILE_SIZE) * TILE_SIZE;
+	x_steps += adjuster;
+	y_steps = ray->ray.orig_point.y + (ft_tan(ray->ray.direction)
+			* (x_steps - ray->ray.orig_point.x));
+	if (!ray->is_right)
+		x_steps -= 1;
+	return ((t_point){x_steps, y_steps});
 }
 
-void    func1(int *x, double *a, double *b, double angle)
+t_point	get_ray_last_intersection_with_vectrics(t_ray *ray, t_parsing *parsing)
 {
-    if ((angle <= 90  && angle >= 0) || (angle >= 270  && angle <= 360))
-    {
-        *a *= -1;
-        *b *= -1;
-        (*x)--;
-    }
+	t_point	last_point;
+	double	xstep;
+	double	ystep;
+	t_point	first_point;
+
+	first_point = get_first_intersection_point_with_vectrics(ray);
+	last_point = first_point;
+	xstep = TILE_SIZE;
+	ystep = (TILE_SIZE * ft_tan(ray->ray.direction));
+	if (!ray->is_right)
+		xstep *= -1;
+	if (ray->is_up && ystep > 0)
+		ystep *= -1;
+	if (!ray->is_up && ystep < 0)
+		ystep *= -1;
+	while (point_is_not_a_wall(last_point, parsing))
+	{
+		last_point.x += xstep;
+		last_point.y += ystep;
+	}
+	return (last_point);
 }
 
-//---------
-t_point get_first_intersection_point_with_vectrics(const   t_vector    *ray)
+t_point	get_first_intersection_point_with_horizons(t_ray *ray)
 {
-    int x;
-    int y;
-    int adjuster;
+	double	x_steps;
+	double	y_steps;
+	int		adjuster;
 
-    adjuster =  (ray->direction < 270  && ray->direction >  90) ? -1 : ENTITY_SIZE;
-    x = floor(ray->origPoint.X / ENTITY_SIZE) * ENTITY_SIZE + adjuster;
-    y = (tan(convert_degree_to_radian(ray->direction)) * (x - ray->origPoint.X) + ray->origPoint.Y);
-    return ((t_point){x, y});
+	adjuster = 0;
+	if (!ray->is_up)
+		adjuster = TILE_SIZE;
+	y_steps = floor(ray->ray.orig_point.y / TILE_SIZE) * (TILE_SIZE);
+	y_steps += adjuster;
+	x_steps = (ray->ray.orig_point.x + (y_steps - ray->ray.orig_point.y)
+			/ ft_tan(ray->ray.direction));
+	if (ray->is_up)
+		y_steps -= 1;
+	return ((t_point){x_steps, y_steps});
 }
 
-t_point get_ray_last_intersection_with_vectrics(const   t_vector    *ray)
+t_point	get_ray_last_intersection_with_horizons(t_ray *ray, t_parsing *parsing)
 {
-    int        x;
-    int        y;
-    double     xstep;
-    double     ystep;
-    t_point first_point;
+	t_point	last_point;
+	double	xstep;
+	double	ystep;
+	t_point	first_point;
 
-    first_point = get_first_intersection_point_with_vectrics(ray);
-    printf("vertical first intersection is : (x=%d, y=%d)\n", first_point.X, first_point.Y);
-    x = first_point.X ;
-    y = first_point.Y;
-    xstep = ENTITY_SIZE;
-    ystep = (ENTITY_SIZE * tan((convert_degree_to_radian(ray->direction))));
-
-    xstep *= (ray->direction < 270  && ray->direction >  90 ) ? -1 : 1;
-    ystep *= (ray->direction < 360  && ray->direction >  180   && ystep > 0) ? -1 : 1;//to up
-    ystep *= (ray->direction > 0    && ray->direction <  180   && ystep < 0) ? -1 : 1;//to down
-
-    while (point_is_not_a_wall((t_point){x, y}))
-    {
-        x += xstep;
-        y += ystep;
-    }
-    return ((t_point){x, y});
+	first_point = get_first_intersection_point_with_horizons(ray);
+	last_point = first_point;
+	ystep = TILE_SIZE;
+	xstep = (TILE_SIZE / ft_tan(ray->ray.direction));
+	if (ray->is_up)
+		ystep *= -1;
+	if (!ray->is_right && xstep > 0)
+		xstep *= -1;
+	if (ray->is_right && xstep < 0)
+		xstep *= -1;
+	while (point_is_not_a_wall(last_point, parsing))
+	{
+		last_point.x += xstep;
+		last_point.y += ystep;
+	}
+	return (last_point);
 }
 
-t_point get_first_intersection_point_with_horizons(const   t_vector    *ray)
+double	get_ray_distance(t_ray *ray, t_parsing *parsing)
 {
-    int x;
-    int y;
-    int adjuster;
+	t_point	hori_intersect;
+	t_point	vertic_intersect;
+	double	vertical_distance;
+	double	horizontal_distance;
 
-    adjuster = (ray->direction < 360  && ray->direction >  180) ? -1 : ENTITY_SIZE;
-    y = floor(ray->origPoint.Y / ENTITY_SIZE) * (ENTITY_SIZE) + adjuster ;
-    x = (ray->origPoint.X + (y - ray->origPoint.Y)/ tan(convert_degree_to_radian(ray->direction)));
-    return ((t_point){x, y});
-}
-
-t_point get_ray_last_intersection_with_horizons(const   t_vector    *ray)
-{
-    int     x;
-    int     y;
-    double     xstep;
-    double     ystep;
-    t_point first_point;
-
-    first_point = get_first_intersection_point_with_horizons(ray);
-    printf("float -->%f\n", ray->direction);
-    printf("horizon first intersection is : (x=%d, y=%d)\n", first_point.X, first_point.Y - 1);
-    x = first_point.X;
-    y = first_point.Y;
-    ystep = ENTITY_SIZE;
-    xstep = (ENTITY_SIZE/tan(convert_degree_to_radian(ray->direction)));
-    
-    ystep *= (ray->direction < 360  && ray->direction >  180) ? -1 : 1;
-    xstep *=  (ray->direction < 270  && ray->direction >  90  && xstep > 0) ? -1 : 1;
-    xstep *=  ((ray->direction > 270  || ray->direction <  90)  && xstep < 0) ? -1 : 1;
-
-    while (point_is_not_a_wall((t_point){x, y}))
-    {
-        x += (xstep);
-        y += (ystep);
-    }
-    return ((t_point){x, y});
-}
-
-double get_ray_distance(t_vector   ray)
-{
-    t_point HoriPoint;
-    t_point VerticPoint;
-    double  vertical_distance;
-    double  horizontal_distance;
-
-    printf("-------->%f\n", ray.direction);
-    HoriPoint = get_ray_last_intersection_with_horizons(&ray);
-    VerticPoint = get_ray_last_intersection_with_vectrics(&ray);
-    // VerticPoint = get_first_intersection_point_with_vectrics(&ray);
-    // HoriPoint = get_first_intersection_point_with_horizons(&ray);
-    printf("Horizonatal x: %d, y:%d, Direction:%f\n", HoriPoint.X, HoriPoint.Y, ray.direction);
-    printf("Vertical x: %d, y:%d\n", VerticPoint.X, VerticPoint.Y);
-    horizontal_distance = get_distance_of_2_point(ray.origPoint, HoriPoint);
-    vertical_distance = get_distance_of_2_point(ray.origPoint, VerticPoint);
-    // printf("****%f\n****%f\n", horizontal_distance, vertical_distance);
-    if (horizontal_distance < vertical_distance)
-        return (horizontal_distance);
-    return (vertical_distance);
-    // HoriPoint.X = 100;
-    // HoriPoint.Y = 100;
-    // return (VerticPoint);
-    // return (HoriPoint);
+	set_ray_direction(ray);
+	vertic_intersect = get_ray_last_intersection_with_vectrics(ray, parsing);
+	hori_intersect = get_ray_last_intersection_with_horizons(ray, parsing);
+	horizontal_distance = get_distance_of_2_point(ray->ray.orig_point,
+			hori_intersect);
+	vertical_distance = get_distance_of_2_point(ray->ray.orig_point,
+			vertic_intersect);
+	if (horizontal_distance < vertical_distance)
+	{
+		ray->intersect_point = hori_intersect;
+		return (horizontal_distance);
+	}
+	ray->intersect_point = vertic_intersect;
+	ray->intersect_is_vertical = true;
+	return (vertical_distance);
 }

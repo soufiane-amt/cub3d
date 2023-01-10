@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotationsListener.c                                :+:      :+:    :+:   */
+/*   projectionPlane.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 19:06:47 by samajat           #+#    #+#             */
-/*   Updated: 2023/01/03 17:01:35 by samajat          ###   ########.fr       */
+/*   Created: 2022/12/20 15:13:29 by samajat           #+#    #+#             */
+/*   Updated: 2023/01/05 20:02:08 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include <cub3d.h>
 
-void	rotate_player(t_player *player, int dir, double angleToRotate)
+double	get_player_distance_2_projection_plane(void)
 {
-	player->pos.direction = angle_normalizer(player->pos.direction + (dir
-				* angleToRotate));
+	return ((WINDOW_WIDTH / 2) / ft_tan(FOV / 2));
 }
 
-void	turn_right(t_player *player)
+double	get_projected_wall_height(double ray_distance_from_wall)
 {
-	rotate_player(player, TO_RIGHT, PLAYER_SPEED / 2);
-}
-
-void	turn_left(t_player *player)
-{
-	rotate_player(player, TO_LEFT, PLAYER_SPEED / 2);
+	return (TILE_SIZE * get_player_distance_2_projection_plane()
+		/ ray_distance_from_wall);
 }

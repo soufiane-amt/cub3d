@@ -6,75 +6,53 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:41:57 by samajat           #+#    #+#             */
-/*   Updated: 2022/12/17 15:52:01 by samajat          ###   ########.fr       */
+/*   Updated: 2023/01/06 19:21:48 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char map[MAP_COL][MAP_RAW] = {{'1', '1', '1', '1', '1', '1', '1'},
-                              {'1', '0', '0', '0', '0', '0', '1'},
-                              {'1', '0', '0', '0', '0', '0', '1'},
-                              {'1', '0', '1', '0', '0', '0', '1'},
-                              {'1', '0', '0', '0', '0', '0', '1'},
-                              {'1', '0', '0', '0', 'N', '0', '1'},
-                              {'1', '0', '0', '0', '0', '0', '1'},
-                              {'1', '1', '1', '1', '1', '1', '1'}};
-// char map[MAP_COL][MAP_RAW] = {{'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','0','0','0','0','0','0'},
-//                              { '1','0','0','0','0','0','0','0','0','0','1','1','0','0','0','0','0','0','0','0','0','0','0','0','1','0','0','0','0','0','0','0','0'},
-//                              { '1','0','1','1','0','0','0','0','0','1','1','1','0','0','0','0','0','0','0','0','0','0','0','0','1','0','0','0','0','0','0','0','0'},
-//                              { '1','0','0','1','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','1','0','0','0','0','0','0','0','0'},
-//                              { '1','1','1','1','1','1','1','1','1','0','1','1','0','0','0','0','0','1','1','1','0','0','0','0','0','0','0','0','0','0','0','0','1'},
-//                              { '1','0','0','0','0','0','0','0','0','0','1','1','0','0','0','0','0','1','1','1','0','1','1','1','1','1','1','1','1','1','1','1','1'},
-//                              { '1','1','1','1','0','1','1','1','1','1','1','1','1','1','0','1','1','1','0','0','0','0','0','0','1','0','0','0','1','0','0','0','0'},
-//                              { '1','1','1','1','0','1','1','1','1','1','1','1','1','1','0','1','1','1','0','1','0','1','0','0','1','0','0','0','1','0','0','0','0'},
-//                              { '1','1','0','0','0','0','0','0','1','1','0','1','0','1','0','1','1','1','0','0','0','0','0','0','1','0','0','0','1','0','0','0','0'},
-//                              { '1','0','0','0','0','0','0','0','0','0','0','N','0','0','0','0','1','1','0','0','0','0','0','0','1','0','0','0','1','0','0','0','0'},
-//                              { '1','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','1','1','0','1','0','1','0','0','1','0','0','0','1','0','0','0','0'},
-//                              { '1','1','0','0','0','0','0','1','1','1','0','1','0','1','0','1','1','1','1','1','0','1','1','1','1','0','0','0','1','1','1','0','0'},
-//                              { '1','1','1','1','0','1','1','1','1','1','1','0','1','0','1','1','0','1','1','1','1','0','1','0','0','0','1','0','0','0','0','0','0'},
-//                              { '1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','0','0','0','0'}};
-int    printPlayerData(t_player *player)
+void	keep_game_working(t_mlx *mlx)
 {
-    printf("Player vector :\n");
-    printf("Player X : %d\n", player->pos.origPoint.X);
-    printf("Player Y : %d\n", player->pos.origPoint.Y);
-    printf("Player magnitude : %f\n", player->pos.magnitude);
-    printf("Player Direction : %f\n", player->pos.direction);
-    return 0;
+	mlx_loop(mlx->mlx);
 }
 
-void    keep_game_working(t_mlx *mlx)
+void	set_up_mlx(t_mlx *mlx, char *title, t_parsing *parsing)
 {
-    mlx_loop(mlx->mlx);
+	mlx->mlx = mlx_init();
+	if (!mlx->mlx)
+		exit(1);
+	mlx->win = mlx_new_window(mlx->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, title);
+	if (!mlx->win)
+		exit(1);
+	mlx->img = ft_creat_an_image(mlx);
+	if (!set_up_texture(mlx, parsing))
+		exit_game_t(parsing, mlx);
 }
 
-void    set_up_mlx(t_mlx    *mlx, char* title)
+void	parse_file(int ac, char **argv, t_parsing *parsing)
 {
-    mlx->mlx = mlx_init();
-    if (!mlx->mlx)
-        exit(1);
-    mlx->win = mlx_new_window(mlx->mlx, WINDOW_SIZEX, WINDOW_SIZEY, title);
-    if (!mlx->win)
-        exit(1);
-    mlx->img = ft_creat_an_image(mlx);
+	if (ft_parser(ac, argv, parsing))
+		ft_exit(parsing, NULL);
 }
 
-void    launch_game(t_mlx *mlx)
+void	launch_game(t_mlx *mlx, t_parsing *parsing)
 {
-    t_player    player;
+	t_player	player;
 
-    set_player_default_info(mlx, &player);
-    render_grid(mlx);
-    renderPlayer(mlx, &player);
-    eventPerceiver(mlx, &player);
-    keep_game_working(mlx);
+	set_player_default_info(&player, parsing);
+	project_3d(mlx, &player, parsing);
+	event_perceiver(mlx, &player, parsing);
+	keep_game_working(mlx);
 }
 
-int main ()
+int	main(int argc, char **argv)
 {
-    t_mlx   mlx;
+	t_mlx		mlx;
+	t_parsing	parsing;
 
-    set_up_mlx(&mlx, "cub3d");
-    launch_game(&mlx);
+	parse_file(argc, argv, &parsing);
+	set_up_mlx(&mlx, "cub3d", &parsing);
+	launch_game(&mlx, &parsing);
+	return (0);
 }

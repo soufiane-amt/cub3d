@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randonTests.c                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 21:53:25 by samajat           #+#    #+#             */
-/*   Updated: 2022/11/25 12:45:07 by samajat          ###   ########.fr       */
+/*   Created: 2021/11/09 16:21:22 by akadi             #+#    #+#             */
+/*   Updated: 2023/01/03 17:20:21 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cub3d.h"
 
-// #define  $USER
-#include <stdio.h>
-#define lol "lolddd"
-
-typedef struct x
+size_t	ft_strlen(const char *s)
 {
-    int         a;
-}x;
+	int	i;
 
-void    func(void *ptr)
-{
-    
-    printf("haa l value : %d\n", ((x*)ptr)->a);
-}
-
-int main ()
-{
-    // x   l;
-
-    // l.a = 1337;
-    func((void *)(&x){45});
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotationsListener.c                                :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 19:06:47 by samajat           #+#    #+#             */
-/*   Updated: 2023/01/03 17:01:35 by samajat          ###   ########.fr       */
+/*   Created: 2021/11/09 15:33:23 by akadi             #+#    #+#             */
+/*   Updated: 2022/12/28 22:45:00 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-
-void	rotate_player(t_player *player, int dir, double angleToRotate)
+int	ft_isdigit(int c)
 {
-	player->pos.direction = angle_normalizer(player->pos.direction + (dir
-				* angleToRotate));
-}
-
-void	turn_right(t_player *player)
-{
-	rotate_player(player, TO_RIGHT, PLAYER_SPEED / 2);
-}
-
-void	turn_left(t_player *player)
-{
-	rotate_player(player, TO_LEFT, PLAYER_SPEED / 2);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotationsListener.c                                :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 19:06:47 by samajat           #+#    #+#             */
-/*   Updated: 2023/01/03 17:01:35 by samajat          ###   ########.fr       */
+/*   Created: 2021/11/11 01:20:58 by akadi             #+#    #+#             */
+/*   Updated: 2023/01/03 17:20:25 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	rotate_player(t_player *player, int dir, double angleToRotate)
+char	*ft_strchr(const char *s, int c)
 {
-	player->pos.direction = angle_normalizer(player->pos.direction + (dir
-				* angleToRotate));
-}
+	char	*src;
 
-void	turn_right(t_player *player)
-{
-	rotate_player(player, TO_RIGHT, PLAYER_SPEED / 2);
-}
-
-void	turn_left(t_player *player)
-{
-	rotate_player(player, TO_LEFT, PLAYER_SPEED / 2);
+	src = (char *)s;
+	while (*src != (char)c)
+	{
+		if (*src == '\0')
+			return (NULL);
+		src++;
+	}
+	return (src);
 }
